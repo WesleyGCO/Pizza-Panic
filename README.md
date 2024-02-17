@@ -22,7 +22,7 @@ Imagens do protótipo podem ser encontradas [aqui](https://github.com/WesleyGCO/
 
 ## Vídeos
 
-Um vídeo de referência para a mecânica do jogo pode ser encontrado no jogo do café do Club Penguin.
+Um vídeo de referência para a mecânica do jogo pode ser encontrado no [jogo do café do Club Penguin](https://www.youtube.com/watch?v=Y_Olby1TKEo).
 
 ## Sprites / Animações
 
@@ -33,6 +33,3 @@ Os sprites e animações estão disponíveis [neste link](https://github.com/Wes
 - [Pixabay - Efeitos Sonoros de Lançar](https://pixabay.com/pt/sound-effects/search/lan%c3%a7ar/)
 - [Jamendo - Efeitos Sonoros para Videogames](https://licensing.jamendo.com/pt/catalogo/projeto/videogame)
 - [Pixabay - Músicas para Jogos de Vídeo](https://pixabay.com/pt/music/search/genre/jogos%20de%20v%C3%ADdeo/)
-
----
-Esse README.md deve fornecer uma visão geral clara do jogo Pizza Panic, incluindo sua descrição, mecânica, arquitetura, recursos disponíveis, efeitos sonoros e vídeos relacionados.
