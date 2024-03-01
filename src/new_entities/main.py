@@ -1,6 +1,7 @@
 import pygame
 import sys
-from Vetor import Vetor
+from Personagem import Personagem
+from Item import Item
 
 def main():
     # Inicialização do Pygame
@@ -10,7 +11,8 @@ def main():
     clock = pygame.time.Clock()
 
     # Criar um objeto personagem
-    personagem = Vetor(cor=(255, 0, 0), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x=375, posicao_y=500)
+    personagem = Personagem(cor=(255, 0, 0), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x=375, posicao_y=500)
+    item = Item(cor=(0, 255, 0), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x=400, posicao_y=250, radius=25)
 
     # Loop principal
     while True:
@@ -30,6 +32,7 @@ def main():
 
         # Desenhar o objeto personagem na tela
         personagem.desenhar(screen)
+        item.desenhar(screen)
 
         pygame.display.flip()
         clock.tick(60)
