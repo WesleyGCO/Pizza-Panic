@@ -25,6 +25,9 @@ class Personagem(Vetor):
         # Desenha a superfície no topo da tela
         screen.blit(superficie_texto, (0, 0))
 
+        # Desenha a contagem no topo da tela
+        pygame.draw.text(screen, f"Itens coletados: {len(self.itens_coletados)}", (0, 0), (255, 255, 255), font=pygame.font.Font(None, 30))
+
     def andar_esquerda(self):
         # Mover para a esquerda
         self.posicao_x -= self.velocidade
