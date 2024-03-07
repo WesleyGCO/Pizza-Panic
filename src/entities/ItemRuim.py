@@ -11,7 +11,7 @@ class ItemRuim:
         self.start_y = y
         self.radius = 25
         self.color = (0, 0, 255)
-        self.speed_x = 0.6
+        self.speed_x = 2
         
     def update(self):
         # Atualiza a posição horizontal (movimento reto)
@@ -30,3 +30,11 @@ class ItemRuim:
     
     def draw(self, screen):
         pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
+
+    def draw_personagem(self, screen, personagem_x, personagem_y):
+        pygame.draw.circle(screen, self.color, (personagem_x, personagem_y), self.radius)
+    
+    def reseta_posicao(self):
+        # Redefine a posição do item ruim para a posição inicial
+        self.x = self.start_x
+        self.y = self.start_y
