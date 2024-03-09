@@ -1,32 +1,19 @@
+from typing import Any
 import pygame
-from pygame.font import Font
+
 from entities.Vetor import Vetor
 from entities.ItemRuim import ItemRuim
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-pygame.init()
-
-fonte = Font(None, 20)
-
 class Personagem(Vetor):
     def __init__(self, cor, tamanho_x, tamanho_y, velocidade, posicao_x, posicao_y):
-        super().__init__(cor, tamanho_x, tamanho_y, velocidade, posicao_x, posicao_y)
-        self.itens_coletados = []     
+        super().__init_Personagem__(cor, tamanho_x, tamanho_y, velocidade, posicao_x, posicao_y)
+        self.itens_coletados = 0
 
     def desenhar(self, screen):
         pygame.draw.rect(screen, self.cor, (self.posicao_x, self.posicao_y, self.tamanho_x, self.tamanho_y))
-
-        # Renderiza a quantidade de itens coletados
-        texto_itens_coletados = f"+ {len(self.itens_coletados)}"
-        
-        superficie_texto = fonte.render(texto_itens_coletados, True, (255, 255, 255))
-        # Desenha a superfície no topo da tela
-        screen.blit(superficie_texto, (0, 0))
-
-        # Desenha a contagem no topo da tela
-        pygame.draw.text(screen, f"Itens coletados: {len(self.itens_coletados)}", (0, 0), (255, 255, 255), font=pygame.font.Font(None, 30))
 
     def andar_esquerda(self):
         # Mover para a esquerda
@@ -48,4 +35,7 @@ class Personagem(Vetor):
 
     def coletar_item(self, itemRuim):
         # Adiciona o item coletado à lista de itens coletados
-        self.itens_coletados.append(itemRuim)
+        self.itens_coletados += 1
+
+    def pegar_itens_coletados(self):
+        return self.itens_coletados

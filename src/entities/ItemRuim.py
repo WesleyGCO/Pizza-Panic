@@ -1,40 +1,33 @@
 import pygame, random
+from entities.Vetor import Vetor
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-class ItemRuim:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+class ItemRuim(Vetor):
+    def __init__(self, x, y, vx, vy):
+        super().__init_ItemRuim__(x, y)
+        self.vx = vx
+        self.vy = vy
+        self.largura = 20
+        self.altura = 20
         self.start_x = x
         self.start_y = y
-        self.radius = 25
-        self.color = (0, 0, 255)
-        self.speed_x = 2
-        
-    def update(self):
-        # Atualiza a posição horizontal (movimento reto)
-        self.x += self.speed_x
-
-        # Calcula o deslocamento vertical baseado na posição atual em x (parábola)
-        displacement = (self.x - self.start_x) ** 2 / \
-            800  # Ajuste o valor conforme necessário
-        self.y = self.start_y + displacement
-
-        # Verifica se a bola azul ultrapassou a tela
-        if self.x - self.radius >= SCREEN_WIDTH or self.y - self.radius >= SCREEN_HEIGHT:
-            # Redefine a posição da bola azul para a posição inicial
-            self.x = self.start_x
-            self.y = self.start_y
     
-    def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
-
-    def draw_personagem(self, screen, personagem_x, personagem_y):
-        pygame.draw.circle(screen, self.color, (personagem_x, personagem_y), self.radius)
+    def desenhar(self, screen):
+        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, self.largura, self.altura))
     
     def reseta_posicao(self):
         # Redefine a posição do item ruim para a posição inicial
         self.x = self.start_x
         self.y = self.start_y
+
+    def movimento_parabolico(self, gravidade):
+        self.atualiza(self.vx, self.vy)
+        self.vy += gravidade  # Simulação da aceleração devido à gravidade
+
+    def reinicia(self):
+        self.x = 0  # Volta para a posição inicial 0x
+        self.y = 300  # Volta para a posição inicial 300y
+        self.vx = random.uniform(2, 5)  # Velocidade horizontal aleatória
+        self.vy = -10  # Velocidade vertical inicial para a trajetória parabólica
