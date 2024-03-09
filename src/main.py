@@ -1,7 +1,7 @@
 from entities.Jogo import Jogo
 
 def main():
-  # Cria uma instância da classe Game
+  # Cria uma instância da classe Jogo
   jogo = Jogo()
 
   # Inicializa o jogo
