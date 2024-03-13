@@ -30,7 +30,9 @@ class Jogo:
         
         self.fonte = pygame.font.Font(None, 30)   
         
-        self.personagem = Personagem(cor=(237, 14, 178), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x=375, posicao_y=500)
+        self.personagem_posicao_x_ratio = 0.5
+        self.personagem_posicao_y_ratio = 0.9
+        self.personagem = Personagem(cor=(237, 14, 178), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x_ratio=self.personagem_posicao_x_ratio, posicao_y_ratio=self.personagem_posicao_y_ratio)
         
         self.imagem_item_ruim = pygame.image.load("assets/Imagens/pizza.png")
         self.itens_ruins = [self.gerenciamentoItens_servico.criar_item() for _ in range(3)]
@@ -95,7 +97,7 @@ class Jogo:
         self.tempo_inicial = 60
 
         # Seta o valor da gravidade
-        self.gravidade = 0.25
+        self.gravidade = 0.20
 
         # Seta o clock
         self.relogio = pygame.time.Clock()

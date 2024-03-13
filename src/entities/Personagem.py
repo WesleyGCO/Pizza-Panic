@@ -8,9 +8,11 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
 class Personagem(Vetor):
-    def __init__(self, cor, tamanho_x, tamanho_y, velocidade, posicao_x, posicao_y):
-        super().__init_Personagem__(cor, tamanho_x, tamanho_y, velocidade, posicao_x, posicao_y)
+    def __init__(self, cor, tamanho_x, tamanho_y, velocidade, posicao_x_ratio, posicao_y_ratio):
+        super().__init_Personagem__(cor, tamanho_x, tamanho_y, velocidade, int(posicao_x_ratio * 800), int(posicao_y_ratio * 600))
         self.itens_coletados = 0
+        self.posicao_x_ratio = posicao_x_ratio
+        self.posicao_y_ratio = posicao_y_ratio
 
     def desenhar(self, screen):
         pygame.draw.rect(screen, self.cor, (self.posicao_x, self.posicao_y, self.tamanho_x, self.tamanho_y))
