@@ -7,15 +7,16 @@ SCREEN_HEIGHT = 600
 class ItemRuim(Vetor):
     def __init__(self, x, y, vx, vy):
         super().__init_ItemRuim__(x, y)
+    
         self.vx = vx
         self.vy = vy
-        self.largura = 20
-        self.altura = 20
+        self.largura = 40
+        self.altura = 40
         self.start_x = x
         self.start_y = y
     
-    def desenhar(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), (self.x, self.y, self.largura, self.altura))
+    def desenhar(self, screen, imagem):
+        screen.blit(pygame.transform.scale(imagem, (self.largura, self.altura)), (self.x, self.y))
     
     def reseta_posicao(self):
         # Redefine a posição do item ruim para a posição inicial

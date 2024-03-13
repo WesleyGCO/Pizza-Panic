@@ -9,10 +9,10 @@ class Item_Servico:
         itemCriado = ItemRuim(0, 300, random.uniform(5, 10), random.uniform(-5, -15))  # Velocidade horizontal inicial aleatória)
         return itemCriado
     
-    def desenhar_item(itemDesenho, screen):
+    def desenhar_item(itemDesenho, screen, imagem):
         # Verifica se o objeto é do tipo ItemRuim
         if isinstance(itemDesenho, ItemRuim):
-            itemDesenho.desenhar(screen)
+            itemDesenho.desenhar(screen, imagem)
 
     def movimento_item(itemMovimenta, gravidade):
         # Verifica se o objeto é do tipo ItemRuim

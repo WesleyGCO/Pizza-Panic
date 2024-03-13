@@ -5,8 +5,8 @@ class GerenciamentoItens_Servico:
     def criar_item(self):
         return Item_Servico.criar_item()
 
-    def desenhar_item(self, itemRuim, screen):
-        Item_Servico.desenhar_item(itemRuim, screen)
+    def desenhar_item(self, itemRuim, screen, imagem):
+        Item_Servico.desenhar_item(itemRuim, screen, imagem)
 
     def movimento_item(self, itemRuim, gravidade):
         # Dá movimento para os itens baseados na gravidade
