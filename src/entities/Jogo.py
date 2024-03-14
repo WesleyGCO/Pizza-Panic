@@ -32,7 +32,7 @@ class Jogo:
         
         self.personagem_posicao_x_ratio = 0.5
         self.personagem_posicao_y_ratio = 0.9
-        self.personagem = Personagem(cor=(237, 14, 178), tamanho_x=50, tamanho_y=50, velocidade=5, posicao_x_ratio=self.personagem_posicao_x_ratio, posicao_y_ratio=self.personagem_posicao_y_ratio)
+        self.personagem = Personagem(cor=(237, 14, 178), tamanho_x=40, tamanho_y=40, velocidade=5, posicao_x_ratio=self.personagem_posicao_x_ratio, posicao_y_ratio=self.personagem_posicao_y_ratio)
         
         self.imagem_item_ruim = pygame.image.load("assets/Imagens/pizza.png")
         self.itens_ruins = [self.gerenciamentoItens_servico.criar_item() for _ in range(3)]
@@ -66,7 +66,7 @@ class Jogo:
                 item.reinicia()
 
     def render(self):
-        # Rendereiza o estado do jogo na tela
+        # Renderiza o estado do jogo na tela
         self.screen.fill((255, 255, 255))
 
         self.jogo_servico.menu_borda(self.screen, self.screen_width, self.screen_width)

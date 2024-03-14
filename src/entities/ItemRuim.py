@@ -31,4 +31,4 @@ class ItemRuim(Vetor):
         self.x = 0  # Volta para a posição inicial 0x
         self.y = 300  # Volta para a posição inicial 300y
         self.vx = random.uniform(2, 5)  # Velocidade horizontal aleatória
-        self.vy = -10  # Velocidade vertical inicial para a trajetória parabólica
+        self.vy = -12  # Velocidade vertical inicial para a trajetória parabólica
