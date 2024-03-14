@@ -1,41 +1,41 @@
 from typing import Any
 import pygame
 
-from entities.Vetor import Vetor
-from entities.ItemRuim import ItemRuim
+from entities.Objeto import Objeto
+from servicos.jogo_servico import Jogo_Servico
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+class Personagem(Objeto):
 
-class Personagem(Vetor):
-    def __init__(self, cor, tamanho_x, tamanho_y, velocidade, posicao_x_ratio, posicao_y_ratio):
-        super().__init_Personagem__(cor, tamanho_x, tamanho_y, velocidade, int(posicao_x_ratio * 800), int(posicao_y_ratio * 600))
+    jogo_servico = Jogo_Servico()
+
+    def __init__(self, cor, x, y, largura, altura, velocidade):
+        super().__init__(x, y, largura, altura)
+        self.cor = cor
+        self.velocidade = velocidade
         self.itens_coletados = 0
-        self.posicao_x_ratio = posicao_x_ratio
-        self.posicao_y_ratio = posicao_y_ratio
 
     def desenhar(self, screen):
-        pygame.draw.rect(screen, self.cor, (self.posicao_x, self.posicao_y, self.tamanho_x, self.tamanho_y))
+        pygame.draw.rect(screen, self.cor, (self.posicao.x, self.posicao.y, self.altura, self.largura))
 
     def andar_esquerda(self):
         # Mover para a esquerda
-        self.posicao_x -= self.velocidade
-
-            # Limitar movimento para não ultrapassar as bordas da tela
-        if self.posicao_x < 0:  # Se estiver à esquerda da tela
-            self.posicao_x = 0
-
-    def andar_direita(self):
-        # Mover para a direita
-        self.posicao_x += self.velocidade
+        self.posicao.x -= self.velocidade
 
         # Limitar movimento para não ultrapassar as bordas da tela
-        if self.posicao_x < 0:  # Se estiver à esquerda da tela
-            self.posicao_x = 0
-        elif self.posicao_x + self.tamanho_x > SCREEN_WIDTH:  # Se estiver à direita da tela
-            self.posicao_x = SCREEN_WIDTH - self.tamanho_x
+        if self.posicao.x < 0:  # Se estiver à esquerda da tela
+            self.posicao.x = 0
 
-    def coletar_item(self, itemRuim):
+    def andar_direita(self, tela_altura):
+        # Mover para a direita
+        self.posicao.x += self.velocidade
+
+        # Limitar movimento para não ultrapassar as bordas da tela
+        if self.posicao.x < 0:  # Se estiver à esquerda da tela
+            self.posicao.x = 0
+        elif self.posicao.x + self.altura > tela_altura:  # Se estiver à direita da tela
+            self.posicao.x = tela_altura - self.altura
+
+    def coletar_item(self):
         # Adiciona o item coletado à lista de itens coletados
         self.itens_coletados += 1
 
