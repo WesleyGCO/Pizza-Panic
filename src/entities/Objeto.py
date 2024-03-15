@@ -18,9 +18,3 @@ class Objeto:
 
     def andar_direita(self):
         pass
-
-    def retorna_x(self):
-        return Vetor(self.posicao.x)
-    
-    def retorna_y(self):
-        return Vetor(self.posicao.y)
