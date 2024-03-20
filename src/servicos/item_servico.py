@@ -1,4 +1,4 @@
-import random
+import random, pygame, time
 
 from entities.Item import Item
 from entities.Personagem import Personagem
@@ -10,6 +10,8 @@ class Item_Servico:
         return itemCriado
     
     def desenhar_item(itemDesenho, screen, imagem):
+        #imagem_pizza = pygame.image.load("assets/Imagens/pizza.png")
+        
         # Verifica se o objeto é do tipo Item
         if isinstance(itemDesenho, Item):
             itemDesenho.desenhar(screen, imagem)
@@ -32,3 +34,14 @@ class Item_Servico:
                     personagem.posicao.x + personagem.altura > itemColide.posicao.x and 
                     personagem.posicao.y < itemColide.posicao.y + itemColide.largura and 
                     personagem.posicao.y + personagem.altura > itemColide.posicao.y)
+            
+    def definir_imagem(id):
+        if (id == 0):
+            imagem_pizza = pygame.image.load("assets/Imagens/pizza.png")
+            return imagem_pizza
+        if (id == 1):
+            imagem_espatula = pygame.image.load("assets/Imagens/Espátula 300.png")
+            return imagem_espatula
+        if (id == 2):
+            imagem_pano = pygame.image.load("assets/Imagens/Pano 300.png")
+            return imagem_pano

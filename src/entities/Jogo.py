@@ -1,6 +1,6 @@
-import pygame
+import pygame, random
 from entities.Personagem import Personagem
-from servicos.gerenciamentoItens_servico import GerenciamentoItens_Servico
+from servicos.gerenciamentoItemPersonagem_servico import GerenciamentoItemPersonagem_Servico
 from servicos.tempo_servico import Tempo_Servico
 from servicos.jogo_servico import Jogo_Servico
 
@@ -24,7 +24,7 @@ class Jogo:
     def init(self):
         pygame.init()
         
-        self.gerenciamentoItens_servico = GerenciamentoItens_Servico()
+        self.gerenciamentoItens_servico = GerenciamentoItemPersonagem_Servico()
         self.tempo_servico = Tempo_Servico()
         
         self.fonte = pygame.font.Font(None, 30)   
@@ -33,7 +33,6 @@ class Jogo:
         self.personagem_posicao_y_ratio = 0.9
         self.personagem = Personagem((237, 14, 178), int(self.personagem_posicao_x_ratio * self.tela_altura), int(self.personagem_posicao_y_ratio * self.tela_largura), 40, 40, 5)
         
-        self.imagem_item_ruim = pygame.image.load("assets/Imagens/pizza.png")
         self.itens_ruins = [self.gerenciamentoItens_servico.criar_item() for _ in range(3)]
         
         self.is_running = True
@@ -77,7 +76,7 @@ class Jogo:
         
         # Desenha, movimenta e reinicia os itens
         for item in self.itens_ruins:
-            self.gerenciamentoItens_servico.desenhar_item(item, self.tela, self.imagem_item_ruim)
+            self.gerenciamentoItens_servico.desenhar_item(item, self.tela)
             self.gerenciamentoItens_servico.movimento_item(item, self.gravidade)
             self.gerenciamentoItens_servico.reinicia_item(item)
 
