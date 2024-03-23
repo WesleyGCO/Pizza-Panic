@@ -6,12 +6,12 @@ Pizza Panic é uma emocionante e frenética aventura ambientada em uma movimenta
 
 ## Arquitetura
 
-Pizza Panic utiliza a Arquitetura Orientada a Componentes, que divide o jogo em entidades independentes chamadas componentes, que podem ser reutilizadas e combinadas para criar diferentes tipos de objetos de jogo. Isso facilita a modularidade e a reutilização de código. Além disso, são aplicados conceitos como Arquitetura Hexagonal, Inversão de Dependências, Portas e Adaptadores.
+Pizza Panic utiliza a Arquitetura Orientada a Componentes, que divide o jogo em entidades independentes chamadas componentes, que podem ser reutilizadas e combinadas para criar diferentes tipos de objetos de jogo. Isso facilita a modularidade e a reutilização de código. 
 
 ## Mecânica do Jogo
 
-- **Balcão de Pedidos:** No início de cada nível, o jogador é apresentado a uma série de pedidos que devem ser atendidos. Cada pedido exige uma combinação de pizzas.
-- **Ação na Cozinha:** A cozinha é o coração do jogo, onde as pizzas são preparadas e lançadas para o pizzaiolo. O jogador deve ficar atento aos diferentes tipos de pizzas e agir rapidamente para pegá-las no ar.
+- **Balcão de Pedidos:** No início de cada nível, o jogador é apresentado a uma série de pedidos que devem ser atendidos. Cada pedido,equivale a uma pizza coletada.
+- **Ação na Cozinha:** A cozinha é o coração do jogo, onde as pizzas são preparadas e lançadas para o pizzaiolo. O jogador deve ficar atento aos diferentes tipos de objeto e agir rapidamente para pegá-las as pizzas no ar.
 - **Entrega de Pizzas:** Assim que o pizzaiolo pega uma pizza, ele deve colocá-la no balcão de entregas. Quanto mais rápido o pedido for atendido, maior será a pontuação do jogador.
 - **Itens "Ruins":** Durante a movimentada atividade na pizzaria, itens indesejados como panos sujos ou pizzas estragadas podem ser lançados junto com as pizzas. O pizzaiolo deve evitar esses itens, pois eles reduzem suas vidas.
 - **Progressão de Fases:** Conforme o jogador avança no jogo, o nível de dificuldade aumenta. Isso significa mais pedidos, maior velocidade de lançamento das pizzas e uma frequência maior de itens "ruins".
