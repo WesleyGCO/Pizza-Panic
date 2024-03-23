@@ -8,7 +8,7 @@ def main():
   jogo.init()
 
   # Executa o loop principal do jogo
-  jogo.run()
+  jogo.iniciar_menu()
 
   # Limpa recursos alocados pelo jogo
   jogo.cleanup()
