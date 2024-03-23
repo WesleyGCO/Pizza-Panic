@@ -11,9 +11,9 @@ Pizza Panic utiliza a Arquitetura Orientada a Componentes, que divide o jogo em 
 ## Mecânica do Jogo
 
 - **Balcão de Pedidos:** No início de cada nível, o jogador é apresentado a uma série de pedidos que devem ser atendidos. Cada pedido,equivale a uma pizza coletada.
-- **Ação na Cozinha:** A cozinha é o coração do jogo, onde as pizzas são preparadas e lançadas para o pizzaiolo. O jogador deve ficar atento aos diferentes tipos de objeto e agir rapidamente para pegá-las as pizzas no ar.
+- **Ação na Cozinha:** A cozinha é o coração do jogo, onde as pizzas são preparadas e lançadas para o pizzaiolo. O jogador deve ficar atento e agir rapidamente para pegar as pizzas no ar.
 - **Entrega de Pizzas:** Assim que o pizzaiolo pega uma pizza, ele deve colocá-la no balcão de entregas. Quanto mais rápido o pedido for atendido, maior será a pontuação do jogador.
-- **Itens "Ruins":** Durante a movimentada atividade na pizzaria, itens indesejados como panos sujos ou pizzas estragadas podem ser lançados junto com as pizzas. O pizzaiolo deve evitar esses itens, pois eles reduzem suas vidas.
+- **Itens "Ruins":** Durante a movimentada atividade na pizzaria, itens indesejados como panos sujos ou pizzas estragadas podem ser lançados junto com as pizzas. O pizzaiolo deve evitar esses itens, pois eles reduzem seus pontos.
 - **Progressão de Fases:** Conforme o jogador avança no jogo, o nível de dificuldade aumenta. Isso significa mais pedidos, maior velocidade de lançamento das pizzas e uma frequência maior de itens "ruins".
 
 ## Prototipação
@@ -33,3 +33,7 @@ Os sprites e animações estão disponíveis [neste link](https://github.com/Wes
 - [Pixabay - Efeitos Sonoros de Lançar](https://pixabay.com/pt/sound-effects/search/lan%c3%a7ar/)
 - [Jamendo - Efeitos Sonoros para Videogames](https://licensing.jamendo.com/pt/catalogo/projeto/videogame)
 - [Pixabay - Músicas para Jogos de Vídeo](https://pixabay.com/pt/music/search/genre/jogos%20de%20v%C3%ADdeo/)
+
+## Como rodar?
+
+Tudo que você precisa fazer é rodar o comando `python .\src\main.py` dentro da pasta do jogo!
