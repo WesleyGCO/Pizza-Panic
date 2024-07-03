@@ -1,5 +1,5 @@
 from entities.Objeto import Objeto
-import pygame
+import pygame # type: ignore
 
 class Espatula(Objeto):
     def __init__(self, x, y, largura, altura, vx, vy):
@@ -17,3 +17,6 @@ class Espatula(Objeto):
 
     def reinicia(self):
         super().reinicia_item()
+
+    def pontuacao(self):
+        return -2

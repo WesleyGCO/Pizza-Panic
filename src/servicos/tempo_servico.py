@@ -6,7 +6,7 @@ class Tempo_Servico:
         quantidade_itens_coletados = personagem.itens_coletados
 
         # Desenha a quantidade de itens coletados na tela
-        texto_itens_coletados = f"Coletados: {quantidade_itens_coletados}"
+        texto_itens_coletados = f"Pontuação: {quantidade_itens_coletados}"
 
         # Cria a superfície do texto
         superficie_texto = fonte.render(texto_itens_coletados, True, (0, 0, 0))

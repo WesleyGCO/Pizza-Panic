@@ -1,4 +1,5 @@
-import pygame
+from entities.Personagem import Personagem
+import pygame # type: ignore
 from entities.Objeto import Objeto
 
 class Pizza(Objeto):
@@ -17,3 +18,6 @@ class Pizza(Objeto):
 
     def reinicia(self):
         super().reinicia_item()
+
+    def pontuacao(self):
+        return 5

@@ -1,7 +1,6 @@
-import pygame, random
+import pygame, random # type: ignore
 
 from components.MenuInicial_componente import MenuInicial
-from entities.Personagem import Personagem
 from servicos.personagem_servico import Personagem_Servico
 from servicos.tempo_servico import Tempo_Servico
 from servicos.jogo_servico import Jogo_Servico
@@ -13,7 +12,7 @@ class Jogo:
         self.tela_altura = 800
         self.tela_largura = 600
 
-        # Cria a tela com o título Pizza Panic
+        # Cria a tela com o título Pizza Panic 
         self.tela = pygame.display.set_mode((self.tela_altura, self.tela_largura))
         # Seta o nome do título
         pygame.display.set_caption("Pizza Panic")
@@ -79,7 +78,7 @@ class Jogo:
         # Verificar colisão entre personagem e item
         for item in self.itens_ruins:
             if self.item_servico.checa_colisao(self.personagem, item):
-                self.personagem_servico.coletar_item(self.personagem)
+                self.personagem_servico.coletar_item(self.personagem, item)
                 self.item_servico.reinicia_item_coletou(item)
 
     def render(self):

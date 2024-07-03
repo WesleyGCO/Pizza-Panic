@@ -27,3 +27,6 @@ class Objeto:
 
     def andar_direita(self):
         pass
+
+    def pontuacao(self):
+        pass

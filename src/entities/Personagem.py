@@ -35,9 +35,10 @@ class Personagem(Objeto):
         elif self.posicao.x + self.altura > tela_altura:  # Se estiver à direita da tela
             self.posicao.x = tela_altura - self.altura
 
-    def coletar_item(self):
+    def coletar_item(self, pontuacao):
         # Adiciona o item coletado à lista de itens coletados
-        self.itens_coletados += 1
+        self.itens_coletados += pontuacao
 
+    
     def pegar_itens_coletados(self):
         return self.itens_coletados
