@@ -37,7 +37,6 @@ class Jogo:
         self.personagem_posicao_y_ratio = 0.9
         self.personagem = self.personagem_servico.criar_personagem(self.tela_largura, self.tela_altura, self.personagem_posicao_x_ratio, self.personagem_posicao_y_ratio)
         self.itens_ruins = [self.item_servico.criar_item() for _ in range(5)]
-        
         self.is_running = True
 
     def iniciar_menu(self):

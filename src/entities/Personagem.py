@@ -13,9 +13,11 @@ class Personagem(Objeto):
         self.cor = cor
         self.velocidade = velocidade
         self.itens_coletados = 0
+        self.imagem_pizzaiolo = pygame.image.load("./assets/Imagens/pizzaiolo.svg")
 
-    def desenhar(self, screen):
-        pygame.draw.rect(screen, self.cor, (self.posicao.x, self.posicao.y, self.altura, self.largura))
+    def desenhar(self, tela):
+        pygame.draw.rect(tela, self.cor, (self.posicao.x, self.posicao.y, self.altura, self.largura))
+        #tela.blit(pygame.transform.scale(self.imagem_pizzaiolo, (self.posicao.x, self.posicao.y), (self.largura, self.altura)))
 
     def andar_esquerda(self):
         # Mover para a esquerda
