@@ -8,13 +8,11 @@ from view.FaseView import FaseView
 from controllers.FaseController import FaseController
 
 from servicos.personagem_servico import Personagem_Servico
-from servicos.item_servico import Item_Servico
 
 class JogoController:
     def __init__(self):
         self.jogo_model = JogoModel()
         self.personagem_servico = Personagem_Servico()
-        self.item_servico = Item_Servico()
 
     def iniciar_jogo(self):
         pygame.init()

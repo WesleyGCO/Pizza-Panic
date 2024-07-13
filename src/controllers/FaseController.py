@@ -1,5 +1,5 @@
 import pygame # type: ignore
-from servicos.item_servico import Item_Servico
+from controllers.ItemController import ItemController
 from servicos.jogo_servico import Jogo_Servico
 from servicos.personagem_servico import Personagem_Servico
 from servicos.tempo_servico import Tempo_Servico
@@ -8,7 +8,7 @@ class FaseController:
     def __init__(self, fase_model, fase_view):
         self.fase_model = fase_model
         self.fase_view = fase_view
-        self.item_servico = Item_Servico()
+        self.item_controller = ItemController()
         self.personagem_servico = Personagem_Servico()
         self.tempo_servico = Tempo_Servico()
         self.jogo_servico = Jogo_Servico()
@@ -18,7 +18,7 @@ class FaseController:
         print(f"Iniciando fase {self.fase_model.numero}")
         self.is_running = True
         while self.is_running:
-            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_servico, self.jogo_servico)
+            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.jogo_servico)
             self.handle_input()
             self.update()
 
@@ -38,6 +38,6 @@ class FaseController:
     def update(self):
         # Verificar colisão entre personagem e item
         for item in self.fase_model.itens_ruins:
-            if self.item_servico.checa_colisao(self.fase_model.personagem, item):
+            if self.item_controller.checa_colisao(self.fase_model.personagem, item):
                 self.personagem_servico.coletar_item(self.fase_model.personagem, item)
-                self.item_servico.reinicia_item_coletou(item)
+                self.item_controller.reinicia_item_coletou(item)
