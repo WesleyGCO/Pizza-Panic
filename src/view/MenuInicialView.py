@@ -1,6 +1,6 @@
 import pygame
 
-class MenuInicial:
+class MenuInicialView:
     def __init__(self, tela):
         self.tela = tela
         self.fonte = pygame.font.Font(None, 36)

@@ -1,5 +1,5 @@
-from entities.Objeto import Objeto
-from entities.Personagem import Personagem
+from models.Objeto import Objeto
+from models.Personagem import Personagem
 
 class Personagem_Servico:
 

@@ -1,15 +1,16 @@
-from entities.Objeto import Objeto
+from models.Personagem import Personagem
 import pygame # type: ignore
+from models.Objeto import Objeto
 
-class Espatula(Objeto):
+class Pizza(Objeto):
     def __init__(self, x, y, largura, altura, vx, vy):
         super().__init__(x, y, largura, altura)
         self.vx = vx
         self.vy = vy
-        self.imagem_espatula = pygame.image.load("./assets/Imagens/Espátula 300.png")
+        self.imagem_pizza = pygame.image.load("./assets/Imagens/pizza.png")
 
     def desenhar(self, tela):
-        tela.blit(pygame.transform.scale(self.imagem_espatula, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
+        tela.blit(pygame.transform.scale(self.imagem_pizza, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
 
     def movimento_parabolico(self, gravidade):
         self.atualiza(self.vx, self.vy)
@@ -19,4 +20,4 @@ class Espatula(Objeto):
         super().reinicia_item()
 
     def pontuacao(self):
-        return -2
+        return 5

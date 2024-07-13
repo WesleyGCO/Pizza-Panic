@@ -1,5 +1,5 @@
 import pygame
-from entities.PygameInterface import PygameInterface
+from models.PygameInterface import PygameInterface
 
 class PygameAdaptador(PygameInterface):
     def __init__():

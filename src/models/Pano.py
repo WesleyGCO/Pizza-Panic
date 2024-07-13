@@ -1,4 +1,4 @@
-from entities.Objeto import Objeto
+from models.Objeto import Objeto
 import pygame # type: ignore
 
 class Pano(Objeto):

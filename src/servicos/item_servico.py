@@ -1,9 +1,9 @@
 import random
 
-from entities.Espatula import Espatula
-from entities.Pano import Pano
-from entities.Pizza import Pizza
-from entities.Personagem import Personagem
+from models.Espatula import Espatula
+from models.Pano import Pano
+from models.Pizza import Pizza
+from models.Personagem import Personagem
 
 class Item_Servico:
 

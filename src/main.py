@@ -1,18 +1,10 @@
-from entities.Jogo import Jogo
+from controllers.JogoController import JogoController
 
 def main():
   # Cria uma instância da classe Jogo
-  jogo = Jogo()
+  jogo_controller = JogoController()
 
-  # Inicializa o jogo
-  jogo.init()
-
-  # Executa o loop principal do jogo
-  jogo.iniciar_menu()
-
-  # Limpa recursos alocados pelo jogo
-  jogo.cleanup()
-
+  jogo_controller.iniciar_jogo()
 
 if __name__ == "__main__":
   main()
