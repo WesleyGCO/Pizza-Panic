@@ -6,10 +6,10 @@ class Espatula(Objeto):
         super().__init__(x, y, largura, altura)
         self.vx = vx
         self.vy = vy
-        self.imagem_espatula = pygame.image.load("./assets/Imagens/Espátula 300.png")
+        self.imagem = pygame.image.load("./assets/Imagens/Espátula 300.png")
 
     def desenhar(self, tela):
-        super().desenhar(tela, self.imagem_espatula)
+        super().desenhar(tela, self.imagem)
 
     def movimento_parabolico(self, gravidade):
         super().atualiza(self.vx, self.vy)

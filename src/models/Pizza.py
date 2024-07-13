@@ -7,10 +7,10 @@ class Pizza(Objeto):
         super().__init__(x, y, largura, altura)
         self.vx = vx
         self.vy = vy
-        self.imagem_pizza = pygame.image.load("./assets/Imagens/pizza.png")
+        self.imagem = pygame.image.load("./assets/Imagens/pizza.png")
 
     def desenhar(self, tela):
-        super().desenhar(tela, self.imagem_pizza)
+        super().desenhar(tela, self.imagem)
 
     def movimento_parabolico(self, gravidade):
         super().atualiza(self.vx, self.vy)
