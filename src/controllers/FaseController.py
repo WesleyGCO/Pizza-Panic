@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 from servicos.item_servico import Item_Servico
 from servicos.jogo_servico import Jogo_Servico
 from servicos.personagem_servico import Personagem_Servico
