@@ -9,10 +9,10 @@ class Pano(Objeto):
         self.imagem_pano = pygame.image.load("./assets/Imagens/Pano 300.png")
 
     def desenhar(self, tela):
-        tela.blit(pygame.transform.scale(self.imagem_pano, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
+        super().desenhar(tela, self.imagem_pano)
 
     def movimento_parabolico(self, gravidade):
-        self.atualiza(self.vx, self.vy)
+        super().atualiza(self.vx, self.vy)
         self.vy += gravidade
 
     def reinicia(self):

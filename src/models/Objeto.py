@@ -1,5 +1,5 @@
 from models.Vetor import Vetor
-import random
+import random, pygame # type: ignore
 
 class Objeto:
     def __init__(self, x, y, largura, altura):
@@ -9,8 +9,8 @@ class Objeto:
         self.start_x = self.posicao.x
         self.start_y = self.posicao.y
 
-    def desenhar(self, screen):
-        pass
+    def desenhar(self, tela, imagem):
+        tela.blit(pygame.transform.scale(imagem, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
 
     def atualiza(self, vx, vy):
         self.posicao.x += vx

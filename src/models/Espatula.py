@@ -9,10 +9,10 @@ class Espatula(Objeto):
         self.imagem_espatula = pygame.image.load("./assets/Imagens/Espátula 300.png")
 
     def desenhar(self, tela):
-        tela.blit(pygame.transform.scale(self.imagem_espatula, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
+        super().desenhar(tela, self.imagem_espatula)
 
     def movimento_parabolico(self, gravidade):
-        self.atualiza(self.vx, self.vy)
+        super().atualiza(self.vx, self.vy)
         self.vy += gravidade
 
     def reinicia(self):

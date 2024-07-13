@@ -10,10 +10,10 @@ class Pizza(Objeto):
         self.imagem_pizza = pygame.image.load("./assets/Imagens/pizza.png")
 
     def desenhar(self, tela):
-        tela.blit(pygame.transform.scale(self.imagem_pizza, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
+        super().desenhar(tela, self.imagem_pizza)
 
     def movimento_parabolico(self, gravidade):
-        self.atualiza(self.vx, self.vy)
+        super().atualiza(self.vx, self.vy)
         self.vy += gravidade
 
     def reinicia(self):
