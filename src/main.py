@@ -1,10 +1,10 @@
-from controllers.JogoController import JogoController
+from logic.JogoService import JogoService
 
 def main():
   # Cria uma instância da classe Jogo
-  jogo_controller = JogoController()
+  jogo_service = JogoService()
 
-  jogo_controller.iniciar_jogo()
+  jogo_service.iniciar_jogo(jogo_service)
 
 if __name__ == "__main__":
   main()
