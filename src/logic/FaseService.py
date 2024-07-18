@@ -18,7 +18,7 @@ class FaseService:
         print(f"Iniciando fase {self.fase_model.numero}")
         self.is_running = True
         while self.is_running:
-            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.jogo_servico)
+            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller)
             self.handle_input()
             self.update()
 
@@ -36,8 +36,15 @@ class FaseService:
             self.personagem_servico.andar_direita(self.fase_model.personagem, self.fase_view.tela_altura)
 
     def update(self):
+
+        if (self.fase_model.concluida == True):
+            self.is_running = False     
+        
         # Verificar colisão entre personagem e item
         for item in self.fase_model.itens_ruins:
             if self.item_controller.checa_colisao(self.fase_model.personagem, item):
                 self.personagem_servico.coletar_item(self.fase_model.personagem, item)
+                self.personagem_servico.contar_pedido(self.fase_model, item)
                 self.item_controller.reinicia_item_coletou(item)
+
+         

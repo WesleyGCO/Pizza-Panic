@@ -30,3 +30,6 @@ class Objeto:
 
     def pontuacao(self):
         pass
+
+    def contar_pedido(self):
+        return 1

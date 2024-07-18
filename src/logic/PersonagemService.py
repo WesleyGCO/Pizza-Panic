@@ -1,5 +1,6 @@
 from data.Objeto import Objeto
 from data.Personagem import Personagem
+from data.Pizza import Pizza
 
 class PersonagemService:
 
@@ -28,3 +29,7 @@ class PersonagemService:
     def pegar_itens_coletados(self, personagem):
         if isinstance(personagem, Personagem):
             return personagem.pegar_itens_coletados()
+        
+    def contar_pedido(self, fase, item):
+        if isinstance(item, Pizza):
+            return fase.adicionar_pedido_coletado()

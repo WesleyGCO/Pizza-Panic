@@ -5,6 +5,7 @@ class Fase:
         self.personagem = personagem
         self.itens_ruins = itens_ruins
         self.tempo_inicial = tempo_inicial
+        self.pedido_coletado = 0
 
     def concluir(self):
         self.concluida = True
@@ -13,3 +14,6 @@ class Fase:
     def resetar(self):
         self.concluida = False
         print(f"Fase {self.numero} resetada")
+
+    def adicionar_pedido_coletado(self):
+        self.pedido_coletado += 1

@@ -1,3 +1,5 @@
+from data.FaseUm import FaseUm
+from presentation.PlacarFaseUI import PlacarFaseUI
 import pygame # type: ignore
 
 from data.Fase import Fase
@@ -40,20 +42,23 @@ class JogoService:
         pygame.quit()
 
     def iniciar_fase(self, numero_fase):
-        if numero_fase == 1:
-            faseModel = Fase(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, self.jogo_model.tempo_inicial)
-            faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
-                                self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                self.jogo_model.gravidade)
-            faseController = FaseService(faseModel, faseView, self.jogo_servico)
-            faseController.iniciar()
+        self.prox_fase = False
+
+        while True:
+            if (numero_fase == 1):
+                faseModel = FaseUm(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, 30)
+                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                                    self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
+                                    self.jogo_model.gravidade)
+                faseController = FaseService(faseModel, faseView, self.jogo_servico)
+                faseController.iniciar()
+
+                if (faseModel.concluida == True):
+                    self.prox_fase = True
+                    numero_fase = 2
+                    break
+            
+            if (numero_fase == 2):
+                print("iniciar próxima fase")
+
     pygame.init()
-
-    def menu_borda(self, tela, tela_altura, tela_largura):
-        # Desenha a borda
-        pygame.draw.rect(tela, (0, 0, 0), (0, 0, tela_altura, tela_largura), 7)
-
-        self.menu_superior = pygame.Surface((tela_altura, 50))
-        self.menu_superior.fill((77, 68, 57))
-
-        tela.blit(self.menu_superior, (0, 0))
