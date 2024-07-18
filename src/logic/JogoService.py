@@ -1,3 +1,4 @@
+from data.FaseDois import FaseDois
 from data.FaseUm import FaseUm
 from presentation.PlacarFaseUI import PlacarFaseUI
 import pygame # type: ignore
@@ -46,19 +47,32 @@ class JogoService:
 
         while True:
             if (numero_fase == 1):
-                faseModel = FaseUm(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, 30)
+                faseUm = FaseUm(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, 30)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.gravidade)
-                faseController = FaseService(faseModel, faseView, self.jogo_servico)
+                faseController = FaseService(faseUm, faseView, self.jogo_servico)
                 faseController.iniciar()
 
-                if (faseModel.concluida == True):
+                if (faseUm.concluida == True):
                     self.prox_fase = True
-                    numero_fase = 2
-                    break
-            
+                    if (self.prox_fase):
+                        numero_fase = 2
+                        self.jogo_view.renderizar_menu_fase(self.jogo_model, numero_fase)
+
             if (numero_fase == 2):
-                print("iniciar próxima fase")
+                faseDois = FaseDois(2, self.jogo_view.personagem, self.jogo_view.itens_ruins, 45)
+                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                                    self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
+                                    self.jogo_model.gravidade)
+                faseController = FaseService(faseDois, faseView, self.jogo_servico)
+                faseController.iniciar()
+
+                if (faseDois.concluida == True):
+                    self.prox_fase = True
+                    if (self.prox_fase):
+                        numero_fase = 3
+                        self.jogo_view.renderizar_menu_fase(self.jogo_model, numero_fase)
+
 
     pygame.init()

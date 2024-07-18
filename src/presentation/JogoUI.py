@@ -1,3 +1,4 @@
+from presentation.MenuFaseUI import MenuFaseUI
 import pygame # type: ignore
 
 from logic.ItemService import ItemService
@@ -9,6 +10,7 @@ class JogoUI:
     def __init__(self, tela, tela_altura, tela_largura):
         self.tela = tela
         self.menu_inicial = MenuInicialUI(self.tela)
+        self.menu_fase = MenuFaseUI(self.tela)
         pygame.init()
         
         self.item_controller = ItemService()
@@ -38,3 +40,20 @@ class JogoUI:
             pygame.display.update()
 
         return False  # Indica que o jogo deve ser encerrado
+    
+    def renderizar_menu_fase(self, jogo_model, numero_fase):
+        rodando_menu_fase = True
+        while rodando_menu_fase:
+            for evento in pygame.event.get():
+                if (evento.type == pygame.QUIT):
+                    pygame.quit()
+                    quit()
+                resultado = self.menu_fase.handle_eventos(evento)
+                if (resultado == "Próxima fase"):
+                    jogo_model.setar_fase(numero_fase)
+                    rodando_menu_fase = False
+                    return True
+                
+            self.menu_fase.renderizar()
+            pygame.display.update()
+        return False
