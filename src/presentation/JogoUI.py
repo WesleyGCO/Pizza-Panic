@@ -54,6 +54,15 @@ class JogoUI:
                     rodando_menu_fase = False
                     return True
                 
+                if (resultado == "Reiniciar fase"):
+                    jogo_model.setar_fase(numero_fase - 1)
+                    rodando_menu_fase = False
+                    return True
+                
+                if (resultado == "Voltar ao menu"):
+                    rodando_menu_fase = False
+                    return True
+                
             self.menu_fase.renderizar()
             pygame.display.update()
         return False

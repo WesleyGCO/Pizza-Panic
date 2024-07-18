@@ -59,6 +59,7 @@ class JogoService:
                     if (self.prox_fase):
                         numero_fase = 2
                         self.jogo_view.renderizar_menu_fase(self.jogo_model, numero_fase)
+                        numero_fase = self.jogo_model.fase_atual
 
             if (numero_fase == 2):
                 faseDois = FaseDois(2, self.jogo_view.personagem, self.jogo_view.itens_ruins, 45)
