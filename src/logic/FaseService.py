@@ -36,15 +36,22 @@ class FaseService:
             self.personagem_servico.andar_direita(self.fase_model.personagem, self.fase_view.tela_altura)
 
     def update(self):
-
         if (self.fase_model.concluida == True):
             self.is_running = False     
         
+        novos_itens = []
         # Verificar colisão entre personagem e item
         for item in self.fase_model.itens_ruins:
             if self.item_controller.checa_colisao(self.fase_model.personagem, item):
                 self.personagem_servico.coletar_item(self.fase_model.personagem, item)
                 self.personagem_servico.contar_pedido(self.fase_model, item)
-                self.item_controller.reinicia_item_coletou(item)
+                novo_item = self.item_controller.reinicia_item_coletou(item)
+                novos_itens.append(novo_item)
+                self.fase_model.itens_ruins = novos_itens
+            else:
+                novos_itens.append(item)
+                self.fase_model.itens_ruins = novos_itens
+
+            
 
          

@@ -61,7 +61,7 @@ class JogoUI:
                 
                 if (resultado == "Voltar ao menu"):
                     rodando_menu_fase = False
-                    return True
+                    return self.renderizar_menu_inicial()
                 
             self.menu_fase.renderizar()
             pygame.display.update()

@@ -13,7 +13,10 @@ class ItemService:
         self.item_view = ItemUI()
     
     def criar_item(self):
-        return self.item_view.criar_item()
+        return self.item_view.criar_item()    
+
+    def criar_item_novamente(self):
+        return self.item_view.criar_item_novamente()
 
     def desenhar_item(self, itemDesenho, tela):        
         if any(isinstance(itemDesenho, classe) for classe in self.classes_item):
@@ -32,7 +35,8 @@ class ItemService:
 
     def reinicia_item_coletou(self, itemReinicia):
         if any(isinstance(itemReinicia, classe) for classe in self.classes_item):
-            itemReinicia.reinicia()
+            # itemReinicia.reinicia()
+            return self.criar_item_novamente()
 
     def checa_colisao(self, personagem, itemColide):
         if isinstance(personagem, Personagem):
