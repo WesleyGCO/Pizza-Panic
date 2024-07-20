@@ -1,8 +1,8 @@
-from logic.JogoService import JogoService
+from adapters.services.JogoServiceImpl import JogoServiceImpl
 
 def main():
   # Cria uma instância da classe Jogo
-  jogo_service = JogoService()
+  jogo_service = JogoServiceImpl()
 
   jogo_service.iniciar_jogo(jogo_service)
 
