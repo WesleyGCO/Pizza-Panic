@@ -6,7 +6,15 @@ Pizza Panic é uma emocionante e frenética aventura ambientada em uma movimenta
 
 ## Arquitetura
 
-Pizza Panic utiliza a Arquitetura Orientada a Componentes, que divide o jogo em entidades independentes chamadas componentes, que podem ser reutilizadas e combinadas para criar diferentes tipos de objetos de jogo. Isso facilita a modularidade e a reutilização de código. 
+Pizza Panic utiliza a arquitetura de camadas, que separa o jogo em três componentes principais:
+
+1) Modelo (Model): Representa os dados e regras de negócio do jogo. Inclui componentes independentes que podem ser reutilizados e combinados para criar diferentes objetos de jogo.
+
+2) Visão (View): Responsável pela apresentação dos dados ao usuário. Isso inclui todos os elementos visuais com os quais o jogador interage durante o jogo.
+
+3) Controlador (Controller): Gerencia a interação entre o modelo e a visão, além de processar as entradas do jogador e atualizar o estado do jogo conforme necessário.
+
+Essa abordagem facilita a modularidade e a reutilização de código ao separar claramente as responsabilidades de cada componente do sistema de software do jogo.
 
 ## Mecânica do Jogo
 
