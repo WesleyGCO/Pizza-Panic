@@ -1,8 +1,8 @@
 import pygame # type: ignore
 
-from adapters.services.ItemServiceImpl import ItemServiceImpl
-from adapters.services.PersonagemServiceImpl import PersonagemServiceImpl
-from adapters.services.TempoServiceImpl import TempoServiceImpl
+from adapters.implementations.ItemServiceImpl import ItemServiceImpl
+from adapters.implementations.PersonagemServiceImpl import PersonagemServiceImpl
+from adapters.implementations.TempoServiceImpl import TempoServiceImpl
 
 from core.interfaces.FaseInterface import FaseInterface
 

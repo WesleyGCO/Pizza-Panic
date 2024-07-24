@@ -1,11 +1,11 @@
 import pygame #type: ignore
 
-from adapters.services.FaseServiceImpl import FaseServiceImpl
+from adapters.implementations.FaseServiceImpl import FaseServiceImpl
 
 from ports.ui.JogoUI import JogoUI
 from ports.ui.FaseUI import FaseUI
 
-from adapters.services.PersonagemServiceImpl import PersonagemServiceImpl
+from adapters.implementations.PersonagemServiceImpl import PersonagemServiceImpl
 from core.entities.FaseUm import FaseUm
 from core.entities.FaseDois import FaseDois
 from core.entities.FaseTres import FaseTres
