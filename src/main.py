@@ -1,4 +1,4 @@
-from adapters.services.JogoServiceImpl import JogoServiceImpl
+from adapters.implementations.JogoServiceImpl import JogoServiceImpl
 
 def main():
   # Cria uma instância da classe Jogo
