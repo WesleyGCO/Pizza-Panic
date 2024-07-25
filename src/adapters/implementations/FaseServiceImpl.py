@@ -19,22 +19,18 @@ class FaseServiceImpl(FaseInterface):
         self.is_running = False
 
         self.tempo = 0
+        self.clock = pygame.time.Clock()
+        self.FPS = 120
 
     def iniciar(self):
         print(f"Iniciando fase {self.fase_model.numero}")
         self.is_running = True
 
-        # Obtém o tempo em milissegundos desde que o jogo começou
-        current_time = pygame.time.get_ticks()
-        
-        # Converte o tempo para segundos
-        segundos_passados = current_time // 1000
-
-        if segundos_passados > self.tempo:
-            self.tempo = segundos_passados
+        self.tempo_decorrido_ms = self.clock.tick(self.FPS)
+        self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 100
 
         while self.is_running:
-            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo)
+            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo_decorrido_segundos)
             self.handle_input()
             self.update()
 
@@ -47,9 +43,9 @@ class FaseServiceImpl(FaseInterface):
         # Verificar teclas pressionadas
         teclas = pygame.key.get_pressed()
         if teclas[pygame.K_LEFT]:
-            self.personagem_servico.andar_esquerda(self.fase_model.personagem, self.tempo, self.jogo_view.aceleracao)
+            self.personagem_servico.andar_esquerda(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_view.aceleracao)
         if teclas[pygame.K_RIGHT]:
-            self.personagem_servico.andar_direita(self.fase_model.personagem, self.tempo, self.jogo_view.aceleracao, self.fase_view.tela_largura)
+            self.personagem_servico.andar_direita(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_view.aceleracao, self.fase_view.tela_largura)
 
     def update(self):
         if (self.fase_model.concluida == True):

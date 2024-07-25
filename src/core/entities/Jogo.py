@@ -7,7 +7,7 @@ class Jogo:
         self.posicao_x_texto = 20
         self.posicao_y_texto = 15
 
-        self.velocidade = 0.20
+        self.velocidade = 0.05
 
         # Seta o tempo inicial
         self.tempo_inicial = 60
