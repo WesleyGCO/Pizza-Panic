@@ -4,21 +4,21 @@ from core.entities.Pizza import Pizza
 from core.interfaces.PersonagemInterface import PersonagemInterface
 
 class PersonagemServiceImpl(PersonagemInterface):
-    def criar_personagem(self, tela_largura, tela_altura, posicao_x_ratio, posicao_y_ratio):
-        personagemCriado = Personagem((237, 14, 178), int(posicao_x_ratio * tela_altura), int(posicao_y_ratio * tela_largura), 40, 40, 5)
+    def criar_personagem(self, tela_largura, tela_altura, posicao_x_ratio, posicao_y_ratio, aceleracao):
+        personagemCriado = Personagem(0, int(posicao_x_ratio * tela_altura), int(posicao_y_ratio * tela_largura), 100, 100, aceleracao)
         return personagemCriado
     
     def desenhar_personagem(self, personagemDesenho, tela):
         if isinstance(personagemDesenho, Personagem):
             personagemDesenho.desenhar(tela)
 
-    def andar_esquerda(self, personagem):
+    def andar_esquerda(self, personagem, tempo, aceleracao):
         if isinstance(personagem, Personagem): 
-            personagem.andar_esquerda()
+            personagem.atualiza_mov_esquerda(tempo, aceleracao)
     
-    def andar_direita(self, personagem, tela_altura):
+    def andar_direita(self, personagem, tempo, aceleracao, w_max):
         if isinstance(personagem, Personagem):
-            personagem.andar_direita(tela_altura)
+            personagem.atualiza_mov_direita(tempo, aceleracao, w_max)
     
     def coletar_item(self, personagem, item):
         if isinstance(item, Objeto):

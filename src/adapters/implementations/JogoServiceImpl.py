@@ -57,8 +57,8 @@ class JogoServiceImpl(JogoInterface):
                 faseUm = FaseUm(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, 30)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                    self.jogo_model.gravidade)
-                faseController = FaseServiceImpl(faseUm, faseView, self.jogo_servico)
+                                    self.jogo_model.velocidade)
+                faseController = FaseServiceImpl(faseUm, faseView, self.jogo_servico, self.jogo_view)
                 faseController.iniciar()
 
                 if (faseUm.concluida == True):
@@ -73,8 +73,8 @@ class JogoServiceImpl(JogoInterface):
                 faseDois = FaseDois(2, self.jogo_view.personagem, self.jogo_view.itens_ruins, 45)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                    self.jogo_model.gravidade)
-                faseController = FaseServiceImpl(faseDois, faseView, self.jogo_servico)
+                                    self.jogo_model.velocidade)
+                faseController = FaseServiceImpl(faseDois, faseView, self.jogo_servico, self.jogo_view)
                 faseController.iniciar()
 
                 if (faseDois.concluida == True):
@@ -88,8 +88,8 @@ class JogoServiceImpl(JogoInterface):
                 faseTres = FaseTres(3, self.jogo_view.personagem, self.jogo_view.itens_ruins, 60)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                    self.jogo_model.gravidade)
-                faseController = FaseServiceImpl(faseTres, faseView, self.jogo_servico)
+                                    self.jogo_model.velocidade)
+                faseController = FaseServiceImpl(faseTres, faseView, self.jogo_servico, self.jogo_view)
                 faseController.iniciar()
 
                 if (faseTres.concluida == True):
@@ -103,8 +103,8 @@ class JogoServiceImpl(JogoInterface):
                 faseQuatro = FaseQuatro(4, self.jogo_view.personagem, self.jogo_view.itens_ruins, 75)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                    self.jogo_model.gravidade)
-                faseController = FaseServiceImpl(faseQuatro, faseView, self.jogo_servico)
+                                    self.jogo_model.velocidade)
+                faseController = FaseServiceImpl(faseQuatro, faseView, self.jogo_servico, self.jogo_view)
                 faseController.iniciar()
 
                 if (faseQuatro.concluida == True):
@@ -118,8 +118,8 @@ class JogoServiceImpl(JogoInterface):
                 faseCinco = FaseCinco(5, self.jogo_view.personagem, self.jogo_view.itens_ruins, 90)
                 faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
-                                    self.jogo_model.gravidade)
-                faseController = FaseServiceImpl(faseCinco, faseView, self.jogo_servico)
+                                    self.jogo_model.velocidade)
+                faseController = FaseServiceImpl(faseCinco, faseView, self.jogo_servico, self.jogo_view)
                 faseController.iniciar()
 
                 if (faseCinco.concluida == True):

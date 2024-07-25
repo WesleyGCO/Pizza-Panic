@@ -21,10 +21,10 @@ class ItemServiceImpl(ItemInterface):
         if any(isinstance(itemDesenho, classe) for classe in self.classes_item):
             self.item_view.desenhar_item(itemDesenho, tela)
 
-    def movimento_item(self, itemMovimenta, gravidade):
+    def movimento_item(self, itemMovimenta, velocidade, tempo):
         # Verifica se o objeto é do tipo Item
         if any(isinstance(itemMovimenta, classe) for classe in self.classes_item):
-            itemMovimenta.movimento_parabolico(gravidade)
+            itemMovimenta.movimento_parabolico(velocidade, tempo)
 
     def reinicia_item_sumiu(self, itemReinicia):
         # Verifica se o objeto é do tipo Item
