@@ -1,6 +1,6 @@
 import json
 
-def load_settings():
+def carregar_configuracoes():
     try:
         with open('settings.json') as f:
             settings = json.load(f)

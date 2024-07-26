@@ -8,10 +8,10 @@ from core.interfaces.FaseInterface import FaseInterface
 
 
 class FaseServiceImpl(FaseInterface):
-    def __init__(self, fase_model, fase_view, jogo_servico, jogo_view):
+    def __init__(self, fase_model, fase_ui, jogo_servico, jogo_ui):
         self.fase_model = fase_model
-        self.fase_view = fase_view
-        self.jogo_view = jogo_view
+        self.fase_ui = fase_ui
+        self.jogo_ui = jogo_ui
         self.item_controller = ItemServiceImpl()
         self.personagem_servico = PersonagemServiceImpl()
         self.tempo_servico = TempoServiceImpl()
@@ -30,7 +30,7 @@ class FaseServiceImpl(FaseInterface):
         self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 90
 
         while self.is_running:
-            self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo_decorrido_segundos)
+            self.fase_ui.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo_decorrido_segundos)
             self.handle_input()
             self.update()
 
@@ -43,9 +43,9 @@ class FaseServiceImpl(FaseInterface):
         # Verificar teclas pressionadas
         teclas = pygame.key.get_pressed()
         if teclas[pygame.K_LEFT]:
-            self.personagem_servico.andar_esquerda(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_view.aceleracao)
+            self.personagem_servico.andar_esquerda(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_ui.aceleracao)
         if teclas[pygame.K_RIGHT]:
-            self.personagem_servico.andar_direita(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_view.aceleracao, self.fase_view.tela_largura)
+            self.personagem_servico.andar_direita(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_ui.aceleracao, self.fase_ui.tela_largura)
 
     def update(self):
         if (self.fase_model.concluida == True):

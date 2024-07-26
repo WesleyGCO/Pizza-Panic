@@ -5,12 +5,12 @@ from core.interfaces.PersonagemInterface import PersonagemInterface
 
 class PersonagemServiceImpl(PersonagemInterface):
     def criar_personagem(self, tela_largura, tela_altura, posicao_x_ratio, posicao_y_ratio, aceleracao):
-        personagemCriado = Personagem(0, int(posicao_x_ratio * tela_altura), int(posicao_y_ratio * tela_largura), 100, 100, aceleracao)
-        return personagemCriado
+        personagem_criado = Personagem(0, int(posicao_x_ratio * tela_altura), int(posicao_y_ratio * tela_largura), 100, 100, aceleracao)
+        return personagem_criado
     
-    def desenhar_personagem(self, personagemDesenho, tela):
-        if isinstance(personagemDesenho, Personagem):
-            personagemDesenho.desenhar(tela)
+    def desenhar_personagem(self, personagem_desenho, tela):
+        if isinstance(personagem_desenho, Personagem):
+            personagem_desenho.desenhar(tela)
 
     def andar_esquerda(self, personagem, tempo, aceleracao):
         if isinstance(personagem, Personagem): 
