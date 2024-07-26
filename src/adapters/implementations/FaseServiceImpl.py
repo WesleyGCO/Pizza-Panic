@@ -27,7 +27,7 @@ class FaseServiceImpl(FaseInterface):
         self.is_running = True
 
         self.tempo_decorrido_ms = self.clock.tick(self.FPS)
-        self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 100
+        self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 90
 
         while self.is_running:
             self.fase_view.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo_decorrido_segundos)

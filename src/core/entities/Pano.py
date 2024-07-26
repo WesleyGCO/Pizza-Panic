@@ -7,7 +7,7 @@ class Pano(Objeto):
         super().__init__(x, y, largura, altura)
         self.vx = vx
         self.vy = vy
-        self.imagem = pygame.image.load("./assets/Imagens/Pano 300.png")
+        self.imagem = pygame.image.load("./assets/Imagens/pano.png")
 
     def desenhar(self, tela):
         super().desenhar(tela, self.imagem)

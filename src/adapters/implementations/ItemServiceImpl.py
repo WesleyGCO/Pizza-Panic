@@ -40,7 +40,8 @@ class ItemServiceImpl(ItemInterface):
     def checa_colisao(self, personagem, itemColide):
         if isinstance(personagem, Personagem):
             if any(isinstance(itemColide, classe) for classe in self.classes_item):
-                return(personagem.posicao.x < itemColide.posicao.x + itemColide.largura and 
-                    personagem.posicao.x + personagem.altura > itemColide.posicao.x and 
-                    personagem.posicao.y < itemColide.posicao.y + itemColide.largura and 
-                    personagem.posicao.y + personagem.altura > itemColide.posicao.y)
+                return (
+                    personagem.posicao.x < itemColide.posicao.x + itemColide.largura and
+                    personagem.posicao.x + personagem.largura > itemColide.posicao.x and
+                    personagem.posicao.y < itemColide.posicao.y + itemColide.altura and
+                    personagem.posicao.y + 5 > itemColide.posicao.y) # Considera apenas 5 pixels da altura do personagem

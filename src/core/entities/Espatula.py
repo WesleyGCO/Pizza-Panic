@@ -7,7 +7,7 @@ class Espatula(Objeto):
         super().__init__(x, y, largura, altura)
         self.vx = vx
         self.vy = vy
-        self.imagem = pygame.image.load("./assets/Imagens/Espátula 300.png")
+        self.imagem = pygame.image.load("./assets/Imagens/espatula.png")
 
     def desenhar(self, tela):
         super().desenhar(tela, self.imagem)
