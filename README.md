@@ -24,7 +24,7 @@ Pizza Panic utiliza a Arquitetura Hexagonal (ou Arquitetura de Portos e Adaptado
 ```bash
 ├── src/
 │ ├── adapters/
-│ │ ├── implementarions/
+│ │ ├── implementations/
 │ │ │ ├── JogoServiceImpl.py
 │ │ │ ├── FaseServiceImpl.py
 │ │ │ ├── ItemServiceImpl.py
