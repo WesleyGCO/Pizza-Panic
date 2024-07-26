@@ -6,23 +6,72 @@ Pizza Panic é uma emocionante e frenética aventura ambientada em uma movimenta
 
 ## Arquitetura
 
-Pizza Panic utiliza a arquitetura de camadas, que separa o jogo em três componentes principais:
+Pizza Panic utiliza a Arquitetura Hexagonal (ou Arquitetura de Portos e Adaptadores), que promove a separação de preocupações e facilita a manutenção e evolução do software. Essa arquitetura é dividida em três camadas principais:
 
-1) Modelo (Model): Representa os dados e regras de negócio do jogo. Inclui componentes independentes que podem ser reutilizados e combinados para criar diferentes objetos de jogo.
+### Núcleo (Core)
+- **Entidades (Entities)**: Contém as classes de negócios e lógica de domínio fundamentais para o jogo, como `Pizza`, `Pano`, `Espatula` e `Personagem`.
+- **Interfaces(Interfaces)**: Define as interfaces que especificam contratos que os adaptadores externos devem seguir.
 
-2) Visão (View): Responsável pela apresentação dos dados ao usuário. Isso inclui todos os elementos visuais com os quais o jogador interage durante o jogo.
+### Portas (Ports)
+- **Interface de Usuário (UI)**: Implementações que lidam com a apresentação dos dados ao usuário. Isso inclui os elementos visuais e interativos do jogo, renderizando os gráficos e recebendo entradas do usuário.
 
-3) Controlador (Controller): Gerencia a interação entre o modelo e a visão, além de processar as entradas do jogador e atualizar o estado do jogo conforme necessário.
+### Adaptadores (Adapters)
+- **Implementações (Implementations)**: Implementações dos serviços definidos nas interfaces do núcleo. Eles contêm a lógica de aplicação, como a criação, movimentação e reinício dos itens/personagem.
+- **Repositórios (Repositories)**: Abstração da forma como os dados da aplicação são armazenados e recuperados. Eles atuam como uma camada intermediária entre a lógica de negócio (casos de uso e entidades) e a infraestrutura de persistência (banco de dados, arquivos, etc.)
 
-Essa abordagem facilita a modularidade e a reutilização de código ao separar claramente as responsabilidades de cada componente do sistema de software do jogo.
+### Estrutura de Diretórios
 
-## Mecânica do Jogo
+```bash
+├── src/
+│ ├── adapters/
+│ │ ├── implementarions/
+│ │ │ ├── JogoServiceImpl.py
+│ │ │ ├── FaseServiceImpl.py
+│ │ │ ├── ItemServiceImpl.py
+│ │ ├── repositories/
+│ │──assets/
+│ │ ├── Imagens/
+│ │ ├── Sons e efeitos sonoros/
+│ ├── core/
+│ │ ├── entities/
+│ │ │ ├── Espatula.py
+│ │ │ ├── Pano.py
+│ │ │ ├── Personagem.py
+│ │ │ ├── Pizza.py
+│ │ │ ├── Fase.py
+│ │ │ ├── FaseUm.py
+│ │ │ ├── FaseDois.py
+│ │ │ ├── FaseTres.py
+│ │ │ ├── FaseQuatro.py
+│ │ │ ├── FaseCinco.py
+│ │ │ ├── Objeto.py
+│ │ │ ├── Vetor.py
+│ │ ├── interfaces/
+│ │ │ ├── ItemInterface.py
+│ │ │ ├── FaseInterface.py
+│ │ │ ├── JogoInterface.py
+│ │ │ ├── PersonagemInterface.py
+│ │ │ ├── TempoInterface.py
+│ ├── ports/
+│ │ ├── ui/
+│ │ │ ├── ItemUI.py
+│ │ │ ├── FaseUI.py
+│ │ │ ├── JogoUI.py
+│ │ │ ├── MenuBordaUI.py
+│ │ │ ├── MenuFaseUI.py
+│ │ │ ├── MenuInicialUI.py
+│ │ │ ├── PlacarFaseUI.py
+│ ├── main.py
+```
 
-- **Balcão de Pedidos:** No início de cada nível, o jogador é apresentado a uma série de pedidos que devem ser atendidos. Cada pedido, equivale a uma pizza coletada.
-- **Ação na Cozinha:** A cozinha é o coração do jogo, onde as pizzas são preparadas e lançadas para o pizzaiolo. O jogador deve ficar atento e agir rapidamente para pegar as pizzas no ar.
-- **Entrega de Pizzas:** Assim que o pizzaiolo pega uma pizza, ele contabiliza o pedido como entregue. Quanto mais rápido o pedido for atendido, maior será a pontuação do jogador.
-- **Itens "Ruins":** Durante a movimentada atividade na pizzaria, itens indesejados como panos sujos ou pizzas estragadas podem ser lançados junto com as pizzas. O pizzaiolo deve evitar esses itens, pois eles reduzem seus pontos.
-- **Progressão de Fases:** Conforme o jogador avança no jogo, o nível de dificuldade aumenta. Isso significa mais pedidos, maior velocidade de lançamento das pizzas e uma frequência maior de itens "ruins".
+### Benefícios da Arquitetura Hexagonal
+
+- **Separação de Preocupações**: Cada componente tem uma responsabilidade bem definida, facilitando a manutenção e evolução do código.
+- **Facilidade de Testes**: Como as regras de negócio estão desacopladas dos detalhes de implementação, é mais fácil testar os componentes isoladamente.
+- **Flexibilidade**: Permite trocar facilmente componentes externos (como bibliotecas de UI ou serviços) sem afetar o núcleo do aplicativo.
+
+Essa abordagem facilita a modularidade e a reutilização de código, mantendo a estrutura do software clara e organizada, o que é essencial para o desenvolvimento contínuo e escalável do Pizza Panic.
+
 
 ## Prototipação
 
