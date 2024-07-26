@@ -16,19 +16,19 @@ from core.entities.Jogo import Jogo
 from core.interfaces.JogoInterface import JogoInterface
 
 class JogoServiceImpl(JogoInterface):
-    def __init__(self):
+    def __init__(self, settings):
         self.jogo_model = Jogo()
         self.personagem_servico = PersonagemServiceImpl()
+        self.tamanho_tela_altura = settings['video']['screen_width']
+        self.tamanho_tela_largura = settings['video']['screen_height']
 
     def iniciar_jogo(self, jogo_servico):
         pygame.init()
 
-        self.tela_altura = 800
-        self.tela_largura = 600
-        self.tela = pygame.display.set_mode((self.tela_altura, self.tela_largura))
+        self.tela = pygame.display.set_mode((self.tamanho_tela_altura, self.tamanho_tela_largura))
         pygame.display.set_caption("Pizza Panic")
 
-        self.jogo_view = JogoUI(self.tela, self.tela_altura, self.tela_largura)
+        self.jogo_view = JogoUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura)
 
         self.jogo_servico = jogo_servico
 
@@ -55,7 +55,7 @@ class JogoServiceImpl(JogoInterface):
         while rodar_menu_fase:
             if (numero_fase == 1):
                 faseUm = FaseUm(1, self.jogo_view.personagem, self.jogo_view.itens_ruins, 30)
-                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                faseView = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.velocidade)
                 faseController = FaseServiceImpl(faseUm, faseView, self.jogo_servico, self.jogo_view)
@@ -71,7 +71,7 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 2):
                 faseDois = FaseDois(2, self.jogo_view.personagem, self.jogo_view.itens_ruins, 45)
-                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                faseView = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.velocidade)
                 faseController = FaseServiceImpl(faseDois, faseView, self.jogo_servico, self.jogo_view)
@@ -86,7 +86,7 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 3):
                 faseTres = FaseTres(3, self.jogo_view.personagem, self.jogo_view.itens_ruins, 60)
-                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                faseView = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.velocidade)
                 faseController = FaseServiceImpl(faseTres, faseView, self.jogo_servico, self.jogo_view)
@@ -101,7 +101,7 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 4):
                 faseQuatro = FaseQuatro(4, self.jogo_view.personagem, self.jogo_view.itens_ruins, 75)
-                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                faseView = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.velocidade)
                 faseController = FaseServiceImpl(faseQuatro, faseView, self.jogo_servico, self.jogo_view)
@@ -116,7 +116,7 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 5):
                 faseCinco = FaseCinco(5, self.jogo_view.personagem, self.jogo_view.itens_ruins, 90)
-                faseView = FaseUI(self.tela, self.tela_altura, self.tela_largura, 
+                faseView = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_view.fonte, self.jogo_model.relogio, self.jogo_model.posicao_x_texto, self.jogo_model.posicao_y_texto, 
                                     self.jogo_model.velocidade)
                 faseController = FaseServiceImpl(faseCinco, faseView, self.jogo_servico, self.jogo_view)
