@@ -13,10 +13,14 @@ class FaseUI:
         self.posicao_x_texto = posicao_x_texto
         self.posicao_y_texto = posicao_y_texto
         self.velocidade = velocidade
+        self.imagem = pygame.image.load("assets\\Imagens\\fundo8x6.png")
+        self.imagem_fundo = pygame.transform.scale(self.imagem, (self.tela_altura, self.tela_largura))
         self.placar_fase_ui = PlacarFaseUI()
 
     def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo):
         self.tela.fill((147, 158, 150))
+
+        self.tela.blit(self.imagem_fundo, (0, 0))
 
         MenuBordaUI.menuBordaUI(self.tela, self.tela_altura, self.tela_largura)
 

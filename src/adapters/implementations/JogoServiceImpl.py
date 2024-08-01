@@ -21,7 +21,7 @@ class JogoServiceImpl(JogoInterface):
         self.personagem_servico = PersonagemServiceImpl()
         self.tamanho_tela_altura = settings['video']['screen_width']
         self.tamanho_tela_largura = settings['video']['screen_height']
-
+        
     def iniciar_jogo(self, jogo_servico):
         pygame.init()
 
@@ -55,10 +55,10 @@ class JogoServiceImpl(JogoInterface):
         while rodar_menu_fase:
             if (numero_fase == 1):
                 fase_um = FaseUm(1, self.jogo_ui.personagem, self.jogo_ui.itens_ruins, 30)
-                fase_ui = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
+                fase_ui_um = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_ui.fonte, self.jogo_entidade.relogio, self.jogo_entidade.posicao_x_texto, self.jogo_entidade.posicao_y_texto, 
                                     self.jogo_entidade.velocidade)
-                fase_servico = FaseServiceImpl(fase_um, fase_ui, self.jogo_servico, self.jogo_ui)
+                fase_servico = FaseServiceImpl(fase_um, fase_ui_um, self.jogo_servico, self.jogo_ui)
                 fase_servico.iniciar()
 
                 if (fase_um.concluida == True):
@@ -71,10 +71,10 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 2):
                 fase_dois = FaseDois(2, self.jogo_ui.personagem, self.jogo_ui.itens_ruins, 45)
-                fase_ui = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
+                fase_ui_dois = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_ui.fonte, self.jogo_entidade.relogio, self.jogo_entidade.posicao_x_texto, self.jogo_entidade.posicao_y_texto, 
                                     self.jogo_entidade.velocidade)
-                fase_servico = FaseServiceImpl(fase_dois, fase_ui, self.jogo_servico, self.jogo_ui)
+                fase_servico = FaseServiceImpl(fase_dois, fase_ui_dois, self.jogo_servico, self.jogo_ui)
                 fase_servico.iniciar()
 
                 if (fase_dois.concluida == True):
@@ -86,10 +86,10 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 3):
                 fase_tres = FaseTres(3, self.jogo_ui.personagem, self.jogo_ui.itens_ruins, 60)
-                fase_ui = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
+                fase_ui_tres = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_ui.fonte, self.jogo_entidade.relogio, self.jogo_entidade.posicao_x_texto, self.jogo_entidade.posicao_y_texto, 
                                     self.jogo_entidade.velocidade)
-                fase_servico = FaseServiceImpl(fase_tres, fase_ui, self.jogo_servico, self.jogo_ui)
+                fase_servico = FaseServiceImpl(fase_tres, fase_ui_tres, self.jogo_servico, self.jogo_ui)
                 fase_servico.iniciar()
 
                 if (fase_tres.concluida == True):
@@ -101,10 +101,10 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 4):
                 fase_quatro = FaseQuatro(4, self.jogo_ui.personagem, self.jogo_ui.itens_ruins, 75)
-                fase_ui = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
+                fase_ui_quatro = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_ui.fonte, self.jogo_entidade.relogio, self.jogo_entidade.posicao_x_texto, self.jogo_entidade.posicao_y_texto, 
                                     self.jogo_entidade.velocidade)
-                fase_servico = FaseServiceImpl(fase_quatro, fase_ui, self.jogo_servico, self.jogo_ui)
+                fase_servico = FaseServiceImpl(fase_quatro, fase_ui_quatro, self.jogo_servico, self.jogo_ui)
                 fase_servico.iniciar()
 
                 if (fase_quatro.concluida == True):
@@ -116,10 +116,10 @@ class JogoServiceImpl(JogoInterface):
 
             if (numero_fase == 5):
                 fase_cinco = FaseCinco(5, self.jogo_ui.personagem, self.jogo_ui.itens_ruins, 90)
-                fase_ui = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
+                fase_ui_cinco = FaseUI(self.tela, self.tamanho_tela_altura, self.tamanho_tela_largura, 
                                     self.jogo_ui.fonte, self.jogo_entidade.relogio, self.jogo_entidade.posicao_x_texto, self.jogo_entidade.posicao_y_texto, 
                                     self.jogo_entidade.velocidade)
-                fase_servico = FaseServiceImpl(fase_cinco, fase_ui, self.jogo_servico, self.jogo_ui)
+                fase_servico = FaseServiceImpl(fase_cinco, fase_ui_cinco, self.jogo_servico, self.jogo_ui)
                 fase_servico.iniciar()
 
                 if (fase_cinco.concluida == True):

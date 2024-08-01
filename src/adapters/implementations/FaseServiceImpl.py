@@ -18,7 +18,6 @@ class FaseServiceImpl(FaseInterface):
         self.jogo_servico = jogo_servico
         self.is_running = False
 
-        self.tempo = 0
         self.clock = pygame.time.Clock()
         self.FPS = 120
 
