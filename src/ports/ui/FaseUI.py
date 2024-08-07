@@ -33,7 +33,7 @@ class FaseUI:
         # Desenha, movimenta e reinicia os itens
         for item in fase_model.itens_ruins:
             item_servico.desenhar_item(item, self.tela)
-            item_servico.movimento_item(item, self.velocidade, tempo)
+            item_servico.movimento_item(item, tempo)
             item_servico.reinicia_item_sumiu(item)
 
         self.placar_fase_ui.renderizar(self.fonte, self.tela, fase_model.pedido_coletado, self.posicao_x_texto, self.posicao_y_texto + 30, fase_model)
