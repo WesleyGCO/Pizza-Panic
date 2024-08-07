@@ -4,6 +4,8 @@ from adapters.implementations.ItemServiceImpl import ItemServiceImpl
 from adapters.implementations.PersonagemServiceImpl import PersonagemServiceImpl
 from adapters.implementations.TempoServiceImpl import TempoServiceImpl
 
+from ports.ui.JogoUI import JogoUI
+
 from core.interfaces.FaseInterface import FaseInterface
 
 
@@ -18,6 +20,7 @@ class FaseServiceImpl(FaseInterface):
         self.jogo_servico = jogo_servico
         self.is_running = False
 
+        self.tempo = 0
         self.clock = pygame.time.Clock()
         self.FPS = 120
 
@@ -26,9 +29,11 @@ class FaseServiceImpl(FaseInterface):
         self.is_running = True
 
         self.tempo_decorrido_ms = self.clock.tick(self.FPS)
-        self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 30
+        self.tempo_decorrido_segundos = self.tempo_decorrido_ms / 1000
 
         while self.is_running:
+            self.jogo_ui.personagem.processamento_fisica(self.tempo_decorrido_segundos)
+            map(lambda item: item.processamento_fisica(self.tempo_decorrido_segundos), self.jogo_ui.itens_ruins)
             self.fase_ui.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_controller, self.tempo_decorrido_segundos)
             self.handle_input()
             self.update()
@@ -42,9 +47,13 @@ class FaseServiceImpl(FaseInterface):
         # Verificar teclas pressionadas
         teclas = pygame.key.get_pressed()
         if teclas[pygame.K_LEFT]:
-            self.personagem_servico.andar_esquerda(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_ui.aceleracao)
-        if teclas[pygame.K_RIGHT]:
-            self.personagem_servico.andar_direita(self.fase_model.personagem, self.tempo_decorrido_segundos, self.jogo_ui.aceleracao, self.fase_ui.tela_largura)
+            if isinstance(self.jogo_ui, JogoUI): 
+                self.jogo_ui.personagem.velocidade.x = -500
+        elif teclas[pygame.K_RIGHT]:
+            if isinstance(self.jogo_ui, JogoUI): 
+                self.jogo_ui.personagem.velocidade.x = +500
+        else:
+            self.jogo_ui.personagem.velocidade.x = 0
 
     def update(self):
         if (self.fase_model.concluida == True):
@@ -57,6 +66,7 @@ class FaseServiceImpl(FaseInterface):
                 self.personagem_servico.coletar_item(self.fase_model.personagem, item)
                 self.personagem_servico.contar_pedido(self.fase_model, item)
                 novo_item = self.item_controller.reinicia_item_coletou(item)
+                novo_item = self.item_controller.reinicia_item_sumiu(item)
                 novos_itens.append(novo_item)
                 self.fase_model.itens_ruins = novos_itens
             else:

@@ -15,16 +15,16 @@ class ItemServiceImpl(ItemInterface):
         return self.item_view.criar_item()    
 
     def criar_item_novamente(self):
-        return self.item_view.criar_item_novamente()
+        return self.item_view.criar_item()
 
     def desenhar_item(self, itemDesenho, tela):        
         if any(isinstance(itemDesenho, classe) for classe in self.classes_item):
             self.item_view.desenhar_item(itemDesenho, tela)
 
-    def movimento_item(self, itemMovimenta, velocidade, tempo):
+    def movimento_item(self, itemMovimenta, tempo):
         # Verifica se o objeto é do tipo Item
         if any(isinstance(itemMovimenta, classe) for classe in self.classes_item):
-            itemMovimenta.movimento_parabolico(velocidade, tempo)
+            itemMovimenta.processamento_fisica(tempo)
 
     def reinicia_item_sumiu(self, itemReinicia):
         # Verifica se o objeto é do tipo Item
@@ -35,7 +35,7 @@ class ItemServiceImpl(ItemInterface):
     def reinicia_item_coletou(self, itemReinicia):
         if any(isinstance(itemReinicia, classe) for classe in self.classes_item):
             # itemReinicia.reinicia()
-            return self.criar_item_novamente()
+            return self.criar_item()
 
     def checa_colisao(self, personagem, itemColide):
         if isinstance(personagem, Personagem):

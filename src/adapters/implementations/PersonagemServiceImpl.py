@@ -15,14 +15,6 @@ class PersonagemServiceImpl(PersonagemInterface):
     def desenhar_personagem(self, personagem_desenho, tela):
         if isinstance(personagem_desenho, Personagem):
             personagem_desenho.desenhar(tela)
-
-    def andar_esquerda(self, personagem, tempo, aceleracao):
-        if isinstance(personagem, Personagem): 
-            personagem.atualiza_mov_esquerda(tempo, aceleracao)
-    
-    def andar_direita(self, personagem, tempo, aceleracao, w_max):
-        if isinstance(personagem, Personagem):
-            personagem.atualiza_mov_direita(tempo, aceleracao, w_max)
     
     def coletar_item(self, personagem, item):
         self.regra_pontuacao.coletar_item(personagem, item)
