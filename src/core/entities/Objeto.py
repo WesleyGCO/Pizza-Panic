@@ -10,30 +10,24 @@ class Objeto:
         self.start_y = self.posicao.y
 
         self.velocidade = Vetor(x=0,y=0)
-        self.aceleracao = Vetor(x,y)
+        self.aceleracao = Vetor(x=0,y=0)
 
     def desenhar(self, tela, imagem):
         tela.blit(pygame.transform.scale(imagem, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
 
-    def atualiza(self, vx, vy, tempo):
-        self.posicao.x += vx * tempo
-        self.posicao.y += vy * tempo
+    def processamento_fisica(self, tempo):
+        self.posicao.x += self.velocidade.x * tempo + self.aceleracao.x * (tempo**2) * 0.5 
+        self.posicao.y += self.velocidade.y * tempo + self.aceleracao.y * (tempo**2) * 0.5
 
-    def movimento_parabolico(self, aceleracao, tempo):
-        self.atualiza(self.vx, self.vy, tempo)
-        self.vy += aceleracao
+        self.velocidade.x += self.aceleracao.x * tempo
+        self.velocidade.y += self.aceleracao.y * tempo
+            
 
     def reinicia_item(self):
         self.posicao.x = self.start_x
         self.posicao.y = self.start_y
         self.vx = random.uniform(2, 5)
         self.vy = -12
-
-    def andar_esquerda(self):
-        pass
-
-    def andar_direita(self):
-        pass
 
     def pontuacao(self):
         pass

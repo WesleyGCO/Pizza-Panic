@@ -10,14 +10,6 @@ class PersonagemInterface(ABC):
         pass
 
     @abstractmethod
-    def andar_esquerda():
-        pass
-
-    @abstractmethod
-    def andar_direita():
-        pass
-
-    @abstractmethod
     def coletar_item():
         pass
 
