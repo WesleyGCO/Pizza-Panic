@@ -4,7 +4,7 @@ from ports.ui.PlacarFaseUI import PlacarFaseUI
 from ports.ui.MenuBordaUI import MenuBordaUI
 
 class FaseUI:
-    def __init__(self, tela, tela_altura, tela_largura, fonte, relogio, posicao_x_texto, posicao_y_texto, velocidade):
+    def __init__(self, tela, tela_altura, tela_largura, fonte, relogio, posicao_x_texto, posicao_y_texto):
         self.tela = tela
         self.tela_altura = tela_altura
         self.tela_largura = tela_largura
@@ -12,8 +12,7 @@ class FaseUI:
         self.relogio = relogio
         self.posicao_x_texto = posicao_x_texto
         self.posicao_y_texto = posicao_y_texto
-        self.velocidade = velocidade
-        self.imagem = pygame.image.load("assets\\Imagens\\fundo8x6.png")
+        self.imagem = pygame.image.load("./assets/Imagens/fundo8x6.png")
         self.imagem_fundo = pygame.transform.scale(self.imagem, (self.tela_altura, self.tela_largura))
         self.placar_fase_ui = PlacarFaseUI()
 
@@ -34,7 +33,10 @@ class FaseUI:
         for item in fase_model.itens_ruins:
             item_servico.desenhar_item(item, self.tela)
             item_servico.movimento_item(item, tempo)
-            item_servico.reinicia_item_sumiu(item)
+            if (item.posicao.y > 600):
+                novo_item = item_servico.reinicia_item(item)
+                fase_model.itens_ruins.remove(item)
+                fase_model.itens_ruins.append(novo_item)
 
         self.placar_fase_ui.renderizar(self.fonte, self.tela, fase_model.pedido_coletado, self.posicao_x_texto, self.posicao_y_texto + 30, fase_model)
 

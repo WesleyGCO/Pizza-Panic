@@ -1,23 +1,14 @@
 import random
 
-from core.entities.Pizza import Pizza
-from core.entities.Espatula import Espatula
-from core.entities.Pano import Pano
+from core.entities.Item import Item
 
 class ItemUI:
     def __init__(self):
-        self.classes_item = [Pano]
+        self.tipos_item = list(Item.TIPOS_ITENS.keys())
 
     def criar_item(self):
-        classe_item = random.choice(self.classes_item)
-        itemCriado = classe_item(0, 300, 40, 40, random.uniform(300, 600), random.uniform(-200, -500))  # Velocidade horizontal inicial aleatória)
-        return itemCriado
-    
-    # def criar_item_novamente(self):
-    #     classe_item = random.choice(self.classes_item)
-    #     itemCriado = classe_item(0, 300, 40, 40, random.uniform(2, 5), -12)  # Velocidade horizontal inicial aleatória)
-    #     return itemCriado
+        tipo_item = random.choice(self.tipos_item)
+        return Item(tipo_item, 0, 300, 40, 40, random.uniform(300, 600), random.uniform(-200, -500))
 
-    def desenhar_item(self, itemDesenho, tela):        
-        if any(isinstance(itemDesenho, classe) for classe in self.classes_item):
-            itemDesenho.desenhar(tela)
+    def desenhar_item(self, item, tela):
+        item.desenhar(tela)
