@@ -1,6 +1,5 @@
 from core.entities.Objeto import Objeto
 from core.entities.Personagem import Personagem
-from core.entities.Pizza import Pizza
 
 class PontuacaoService:
     def coletar_item(self, personagem, item):
@@ -14,5 +13,5 @@ class PontuacaoService:
             return personagem.pegar_itens_coletados()
         
     def contar_pedido(self, fase, item):
-        if isinstance(item, Pizza):
+        if item.tipo == "pizza":
             return fase.adicionar_pedido_coletado()

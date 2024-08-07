@@ -50,7 +50,6 @@ class FaseServiceImpl(FaseInterface):
             if isinstance(self.jogo_ui, JogoUI): 
                 self.jogo_ui.personagem.velocidade.x = -500
         elif teclas[pygame.K_RIGHT]:
-            if isinstance(self.jogo_ui, JogoUI): 
                 self.jogo_ui.personagem.velocidade.x = +500
         else:
             self.jogo_ui.personagem.velocidade.x = 0
@@ -58,17 +57,13 @@ class FaseServiceImpl(FaseInterface):
     def update(self):
         if (self.fase_model.concluida == True):
             self.is_running = False     
-        
-        novos_itens = []
+    
         # Verificar colisão entre personagem e item
         for item in self.fase_model.itens_ruins:
             if self.item_controller.checa_colisao(self.fase_model.personagem, item):
                 self.personagem_servico.coletar_item(self.fase_model.personagem, item)
                 self.personagem_servico.contar_pedido(self.fase_model, item)
-                novo_item = self.item_controller.reinicia_item_coletou(item)
-                novo_item = self.item_controller.reinicia_item_sumiu(item)
-                novos_itens.append(novo_item)
-                self.fase_model.itens_ruins = novos_itens
-            else:
-                novos_itens.append(item)
-                self.fase_model.itens_ruins = novos_itens
+                novo_item = self.item_controller.reinicia_item(item)
+                self.fase_model.itens_ruins.remove(item)
+                self.fase_model.itens_ruins.append(novo_item)
+            

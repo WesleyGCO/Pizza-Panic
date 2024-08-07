@@ -1,7 +1,5 @@
 from adapters.implementations.PontuacaoService import PontuacaoService
-from core.entities.Objeto import Objeto
 from core.entities.Personagem import Personagem
-from core.entities.Pizza import Pizza
 from core.interfaces.PersonagemInterface import PersonagemInterface
 
 class PersonagemServiceImpl(PersonagemInterface):
@@ -15,6 +13,14 @@ class PersonagemServiceImpl(PersonagemInterface):
     def desenhar_personagem(self, personagem_desenho, tela):
         if isinstance(personagem_desenho, Personagem):
             personagem_desenho.desenhar(tela)
+
+    def andar_esquerda(self, personagem, tempo, aceleracao):
+        if isinstance(personagem, Personagem): 
+            personagem.atualiza_mov_esquerda(tempo, aceleracao)
+    
+    def andar_direita(self, personagem, tempo, aceleracao, w_max):
+        if isinstance(personagem, Personagem):
+            personagem.atualiza_mov_direita(tempo, aceleracao, w_max)
     
     def coletar_item(self, personagem, item):
         self.regra_pontuacao.coletar_item(personagem, item)
@@ -24,5 +30,5 @@ class PersonagemServiceImpl(PersonagemInterface):
             return personagem.pegar_itens_coletados()
         
     def contar_pedido(self, fase, item):
-        if isinstance(item, Pizza):
+        if item.tipo == "pizza":
             return fase.adicionar_pedido_coletado()
