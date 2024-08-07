@@ -19,7 +19,6 @@ class Personagem(Objeto):
     def coletar_item(self, pontuacao):
         # Adiciona o item coletado à lista de itens coletados
         self.itens_coletados += pontuacao
-
     
     def pegar_itens_coletados(self):
         return self.itens_coletados

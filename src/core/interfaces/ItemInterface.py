@@ -6,10 +6,6 @@ class ItemInterface(ABC):
         pass
 
     @abstractmethod
-    def criar_item_novamente():
-        pass
-
-    @abstractmethod
     def desenhar_item():
         pass
 
@@ -18,11 +14,7 @@ class ItemInterface(ABC):
         pass
 
     @abstractmethod
-    def reinicia_item_sumiu():
-        pass
-
-    @abstractmethod
-    def reinicia_item_coletou():
+    def reinicia_item():
         pass
 
     @abstractmethod

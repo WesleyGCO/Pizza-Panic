@@ -21,13 +21,6 @@ class Objeto:
 
         self.velocidade.x += self.aceleracao.x * tempo
         self.velocidade.y += self.aceleracao.y * tempo
-            
-
-    def reinicia_item(self):
-        self.posicao.x = self.start_x
-        self.posicao.y = self.start_y
-        self.vx = random.uniform(2, 5)
-        self.vy = -12
 
     def pontuacao(self):
         pass
