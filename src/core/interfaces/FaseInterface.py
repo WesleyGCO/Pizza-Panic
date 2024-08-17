@@ -6,9 +6,13 @@ class FaseInterface(ABC):
         pass
 
     @abstractmethod
-    def handle_input(self):
+    def lidar_entrada(self):
         pass
 
     @abstractmethod
-    def update(self):
+    def atualizar(self):
+        pass
+    
+    @abstractmethod
+    def contar_pedido(self):
         pass

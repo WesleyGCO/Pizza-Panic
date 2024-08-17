@@ -1,14 +1,14 @@
-from adapters.implementations.JogoServiceImpl import JogoServiceImpl
+
 from config.config import carregar_configuracoes
+from core.services.jogo_service import JogoService
+
 
 def main():
+    configuracoes = carregar_configuracoes()
 
-  settings = carregar_configuracoes()
-  
-  # Cria uma instância da classe Jogo
-  jogo_service = JogoServiceImpl(settings)
+    jogo_service = JogoService(configuracoes)
 
-  jogo_service.iniciar_jogo(jogo_service)
+    jogo_service.iniciar_jogo()
 
 if __name__ == "__main__":
-  main()
+    main()

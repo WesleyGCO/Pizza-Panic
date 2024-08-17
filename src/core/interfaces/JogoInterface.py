@@ -6,9 +6,5 @@ class JogoInterface(ABC):
         pass
 
     @abstractmethod
-    def iniciar_fase():
-        pass
-
-    @abstractmethod
     def encerrar_jogo():
         pass

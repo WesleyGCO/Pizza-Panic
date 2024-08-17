@@ -6,10 +6,6 @@ class ItemInterface(ABC):
         pass
 
     @abstractmethod
-    def desenhar_item():
-        pass
-
-    @abstractmethod
     def movimento_item():
         pass
 
