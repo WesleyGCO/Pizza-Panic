@@ -1,3 +1,4 @@
+from adapters.primary import pygame_output_adapter
 from core.interfaces.ItemInterface import ItemInterface
 from application.models.Item import Item
 from application.models.Personagem import Personagem
@@ -17,6 +18,7 @@ class ItemService(ItemInterface):
             itemMovimenta.processamento_fisica(tempo)
 
     def reinicia_item(self, itemReinicia):
+        pygame_output_adapter.tocar_som("lancamento")
         if isinstance(itemReinicia, Item):
             return self.criar_item()
 

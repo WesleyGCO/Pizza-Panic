@@ -13,7 +13,7 @@ class MenuInicialUI:
         self.cor_botao_normal = (5, 40, 97)
         
     def renderizar_menu_inicial(self):
-        
+        pygame_output_adapter.tocar_som("menu_inicial")
         pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, self.botao_jogar)
         texto_botao = pygame_output_adapter.renderizar_texto("Jogar")
         largura_texto, altura_texto = texto_botao.get_size()
@@ -24,6 +24,7 @@ class MenuInicialUI:
     def lidar_entrada_menu_inicial(self, evento):
         if (pygame_input_adapter.clicado(evento)):
             if (self.botao_jogar.collidepoint(evento.pos)):
+                pygame_output_adapter.parar_som("menu_inicial")
                 return "JOGAR"
             
         else:

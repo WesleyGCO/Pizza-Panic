@@ -1,11 +1,12 @@
 class Fase:
-    def __init__(self, numero, personagem, itens_ruins, tempo_inicial):
+    def __init__(self, numero, personagem, itens_ruins, tempo_inicial, pedido):
         self.numero = numero
         self.concluida = False
         self.personagem = personagem
         self.itens_ruins = itens_ruins
         self.tempo_inicial = tempo_inicial
         self.pedido_coletado = 0
+        self.pedido = pedido
 
     def concluir(self):
         self.concluida = True

@@ -3,5 +3,10 @@
         "screen_width": 800,
         "screen_height": 600,
         "fullscreen": false
+    },
+    "sons":{
+        "sons_dir": "./adapters/primary/sons/",
+        "volume_menu_inicial": 0.6,
+        "volume_efeitos": 0.2
     }
 }

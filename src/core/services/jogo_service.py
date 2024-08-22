@@ -6,7 +6,7 @@ from core.interfaces.JogoInterface import JogoInterface
 from core.services.item_service import ItemService
 from core.services.personagem_service import PersonagemService
 
-from adapters.primary import pygame_output_adapter, pygame_input_adapter
+from adapters.primary import pygame_output_adapter
 from adapters.primary.use_cases import gerenciar_fase
 
 class JogoService(JogoInterface):
@@ -36,10 +36,6 @@ class JogoService(JogoInterface):
             if (self.jogo_model.fase_atual == 6):
                 print("Entrei aqui")
                 self.encerrar_jogo()
-                
-            for evento in pygame_input_adapter.capturar_eventos():
-                if (evento.type == pygame_input_adapter.eh_sair(evento)):
-                    rodando_jogo = False
                     
         pygame_output_adapter.sair()
                 

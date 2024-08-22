@@ -1,7 +1,11 @@
-import pygame #type: ignore
+import pygame, json #type: ignore
+
+with open("settings.json") as f:
+    configuracoes = json.load(f)
 
 def iniciar():
     pygame.init()
+    pygame.mixer.init()
 
 iniciar()
 
@@ -118,3 +122,31 @@ def renderizar_texto_placar(texto_pedidos, texto_atendidos):
     desenhar_superficie(superficie_texto_atendidos, (posicao_x_centralizada + superficie_texto_pedidos.get_width() + 20, posicao_y_centralizada))
 
 #endregion Textos e fonte
+
+#region Sons
+
+SONS_DIR = configuracoes['sons']['sons_dir']
+
+# Dicionário de sons
+sons = {
+    "menu_inicial": pygame.mixer.Sound(SONS_DIR + "musica fundo inicial.mp3"),
+    "lancamento": pygame.mixer.Sound(SONS_DIR + "lancamento.mp3"),
+    "erro_item": pygame.mixer.Sound(SONS_DIR + "error.mp3"),
+    "conclusao_fase": pygame.mixer.Sound(SONS_DIR + "Sucesso fase.mp3")
+}
+
+sons["menu_inicial"].set_volume(configuracoes["sons"]["volume_menu_inicial"])
+
+for nome_som, som in sons.items():
+    if nome_som != "menu_inicial":  # Ignora o som de fundo, que já teve o volume ajustado
+        som.set_volume(configuracoes["sons"]["volume_efeitos"])
+
+def tocar_som(nome_som):
+    if nome_som in sons:
+        sons[nome_som].play()
+
+def parar_som(nome_som):
+    if nome_som in sons:
+        sons[nome_som].stop()
+
+#endregion Sons

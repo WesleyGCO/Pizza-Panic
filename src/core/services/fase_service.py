@@ -46,10 +46,16 @@ class FaseService(FaseInterface):
         
         if (tecla_pressionada['esquerda']):
             if isinstance(self.fase_model.personagem, Personagem):
-                self.fase_model.personagem.velocidade.x = -500
+                if(self.fase_model.personagem.posicao.x >= 0):
+                    self.fase_model.personagem.velocidade.x = -500
+                else:
+                    self.fase_model.personagem.velocidade.x = 0
         elif (tecla_pressionada['direita']):
             if isinstance(self.fase_model.personagem, Personagem):
-                self.fase_model.personagem.velocidade.x = +500
+                if(self.fase_model.personagem.posicao.x <= 700):
+                    self.fase_model.personagem.velocidade.x = +500
+                else:
+                    self.fase_model.personagem.velocidade.x = 0
         else:
             if isinstance(self.fase_model.personagem, Personagem):
                 self.fase_model.personagem.velocidade.x = 0

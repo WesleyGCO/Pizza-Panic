@@ -1,4 +1,6 @@
+from adapters.primary import pygame_output_adapter
 from adapters.primary.use_cases import gerenciar_personagem
+from application.models.Item import Item
 from core.interfaces.PersonagemInterface import PersonagemInterface
 from core.services import pontuacao_service
 
@@ -14,6 +16,7 @@ class PersonagemService(PersonagemInterface):
 
     def coletar_item(self, personagem, item):
         self.pontuacao_service.coletar_item(personagem, item)
+                
 
     def pegar_itens_coletados(self, personagem):
         return self.pontuacao_service.pegar_itens_coletados(personagem)

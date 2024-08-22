@@ -1,3 +1,4 @@
+from adapters.primary import pygame_output_adapter
 from application.models.Vetor import Vetor
 import random, pygame # type: ignore
 
