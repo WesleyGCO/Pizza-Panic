@@ -22,3 +22,6 @@ class TempoService(TempoInterface):
         superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (0, 0, 0))
 
         pygame_output_adapter.desenhar_superficie(superficie_texto_relogio, (tela_altura - superficie_texto_relogio.get_width() - 10, 10))
+
+        if (tempo_formatado == 0):
+            return False

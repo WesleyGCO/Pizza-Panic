@@ -55,6 +55,7 @@ class JogoUI:
                     return True
                 elif (resultado_fase == "Voltar ao menu"):
                     rodando_menu_fase = False
+                    pygame_output_adapter.preencher_tela((0,0,0))
                     return self.rodar_menu_inicial()
                 
             self.menu_fase.renderizar_menu_fase()
