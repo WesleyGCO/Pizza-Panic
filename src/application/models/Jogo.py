@@ -6,6 +6,7 @@ class Jogo:
         self.is_running = False
         self.posicao_x_texto = 20
         self.posicao_y_texto = 15
+        self.fase_perdida = False
 
         # Seta o tempo inicial
         self.tempo_inicial = 60

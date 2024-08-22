@@ -33,9 +33,9 @@ class JogoService(JogoInterface):
                 gerenciar_fase.iniciar_fase(self.jogo_model, self.jogo_ui, 
                                             self.fase_ui, self.item_service, self.personagem_service)
                 
-            # if (self.jogo_model.fase_atual == 6):
-            #     print("Entrei aqui")
-            #     self.encerrar_jogo()
+            if (self.jogo_model.fase_perdida):
+                print("Entrei aqui")
+                self.encerrar_jogo()
                     
         pygame_output_adapter.sair()
                 

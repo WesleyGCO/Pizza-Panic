@@ -7,7 +7,6 @@ class Fase:
         self.tempo_inicial = tempo_inicial
         self.pedido_coletado = 0
         self.pedido = pedido
-        self.fase_perdida = False
 
     def concluir(self):
         self.concluida = True

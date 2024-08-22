@@ -26,6 +26,9 @@ def iniciar_fase(jogo_model, jogo_ui, fase_ui, item_service, personagem_service)
         else:
             break  
 
+def reiniciar_fase(personagem):
+    personagem
+
 def verificar_conclusao_fase(fase_model):
     if fase_model.pedido == fase_model.pedido_coletado:
         fase_model.concluida = True

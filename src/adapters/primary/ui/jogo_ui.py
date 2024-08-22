@@ -55,6 +55,8 @@ class JogoUI:
                     return True
                 elif (resultado_fase == "Voltar ao menu"):
                     rodando_menu_fase = False
+                    # gerenciar_fase.reiniciar_fase(self.personagem)
+                    gerenciar_fase.setar_fase(jogo_model, 1)
                     pygame_output_adapter.preencher_tela((0,0,0))
                     return self.rodar_menu_inicial()
                 
