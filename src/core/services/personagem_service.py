@@ -14,9 +14,5 @@ class PersonagemService(PersonagemInterface):
     def desenhar_personagem(self, personagem):
         return gerenciar_personagem.desenhar_personagem(personagem)
 
-    def coletar_item(self, personagem, item):
-        self.pontuacao_service.coletar_item(personagem, item)
-                
-
-    def pegar_itens_coletados(self, personagem):
-        return self.pontuacao_service.pegar_itens_coletados(personagem)
+    def adicionar_pontuacao(self, personagem, item):
+        self.pontuacao_service.adicionar_pontuacao(personagem, item)

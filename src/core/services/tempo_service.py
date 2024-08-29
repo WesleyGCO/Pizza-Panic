@@ -5,7 +5,7 @@ from adapters.primary import pygame_output_adapter
 class TempoService(TempoInterface):
     def atualizar_contador(self, personagem, posicao_x_texto, posicao_y_texto):
         # Obtém a quantidade de itens coletados
-        quantidade_itens_coletados = personagem.itens_coletados
+        quantidade_itens_coletados = personagem.pontuacao_personagem
 
         # Desenha a quantidade de itens coletados na tela
         texto_itens_coletados = f"Pontuação: {quantidade_itens_coletados}"
@@ -22,6 +22,3 @@ class TempoService(TempoInterface):
         superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (0, 0, 0))
 
         pygame_output_adapter.desenhar_superficie(superficie_texto_relogio, (tela_altura - superficie_texto_relogio.get_width() - 10, 10))
-
-        if (tempo_formatado == 0):
-            return False

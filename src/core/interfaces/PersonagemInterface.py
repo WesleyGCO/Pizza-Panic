@@ -10,9 +10,5 @@ class PersonagemInterface(ABC):
         pass
 
     @abstractmethod
-    def coletar_item():
-        pass
-
-    @abstractmethod
-    def pegar_itens_coletados():
+    def adicionar_pontuacao():
         pass

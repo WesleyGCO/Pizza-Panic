@@ -12,9 +12,5 @@ class Fase:
         self.concluida = True
         print(f"Fase {self.numero} concluída!")
 
-    def resetar(self):
-        self.concluida = False
-        print(f"Fase {self.numero} resetada")
-
     def adicionar_pedido_coletado(self):
         self.pedido_coletado += 1

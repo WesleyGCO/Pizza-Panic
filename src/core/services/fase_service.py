@@ -68,7 +68,7 @@ class FaseService(FaseInterface):
 
         for item in self.fase_model.itens_ruins:
             if self.item_service.checa_colisao(self.fase_model.personagem, item):
-                self.personagem_service.coletar_item(self.fase_model.personagem, item)
+                self.personagem_service.adicionar_pontuacao(self.fase_model.personagem, item)
                 self.contar_pedido(self.fase_model, item)
                 novo_item = self.item_service.reinicia_item(item)
                 self.fase_model.itens_ruins.remove(item)
