@@ -31,14 +31,36 @@ def preencher_superficie(superficie, cor):
 
 #region Criar e Desenhar
 
-def desenhar_item(item):
+def rodar_item(item,angulo):
+    imagem = redimensionar_imagem(item.imagem, item.largura, item.altura)
+    rotated_image = pygame.transform.rotate(imagem, angulo)
+    image_rect = item.imagem.get_rect(center=(item.posicao.x, item.posicao.y))  # Posiciona a imagem no centro da tela
+    rotated_rect = rotated_image.get_rect(center=image_rect.center)
+
     tela = retornar_tela()
-    return tela.blit(redimensionar_imagem(item.imagem, item.largura, item.altura), (item.posicao.x, item.posicao.y))
+
+    return tela.blit(rotated_image,rotated_rect)
+
+def desenhar_item(item,angulo):
+    # tela = retornar_tela()
+    # return tela.blit(redimensionar_imagem(item.imagem, item.largura, item.altura), (item.posicao.x, item.posicao.y))
+    imagem = redimensionar_imagem(item.imagem, item.largura, item.altura)
+    rotated_image = pygame.transform.rotate(imagem, angulo)
+    image_rect = item.imagem.get_rect(center=(item.posicao.x, item.posicao.y))  # Posiciona a imagem no centro da tela
+    rotated_rect = rotated_image.get_rect(center=image_rect.center)
+
+    tela = retornar_tela()
+
+    return tela.blit(rotated_image,rotated_rect)
+
+def rotacionar_item(item):
+    pass
 
 def desenhar_personagem(personagem):
     tela = retornar_tela()
     return tela.blit(redimensionar_imagem(personagem.imagem_pizzaiolo, personagem.largura, personagem.altura), (personagem.posicao.x, personagem.posicao.y))
     
+
 def criar_superficie(tamanho):
     return pygame.Surface((tamanho, 50))    
 

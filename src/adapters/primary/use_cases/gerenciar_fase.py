@@ -15,6 +15,7 @@ def criar_fase(numero_fase, personagem, itens_ruins):
 def iniciar_fase(jogo_model, jogo_ui, fase_ui, item_service, personagem_service):
     while True:  
         fase = criar_fase(jogo_model.fase_atual, jogo_ui.personagem, jogo_ui.itens_ruins)
+        
         fase_service = FaseService(fase, fase_ui, item_service, personagem_service)
         fase_service.iniciar()
 

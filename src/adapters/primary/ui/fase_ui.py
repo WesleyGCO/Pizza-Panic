@@ -12,6 +12,8 @@ class FaseUI:
         self.imagem = pygame_output_adapter.carregar_imagem("./adapters/primary/sprites/fundo8x6.png")
         self.imagem_redimensionada = pygame_output_adapter.redimensionar_imagem(self.imagem, self.tela_altura, self.tela_largura)
         self.placar_service = PlacarService()
+
+        self.angulo = 0
         
     def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo):
         pygame_output_adapter.preencher_tela((147, 158, 150))
@@ -23,10 +25,18 @@ class FaseUI:
 
         tempo_servico.atualizar_contador(fase_model.personagem, self.posicao_x_texto, self.posicao_y_texto)
         tempo_servico.contagem_regressiva(fase_model.tempo_inicial, self.tela_altura)
+
+        if self.angulo >= 360:
+            self.angulo = 0
+        else:
+            self.angulo += 3
+
+        # print(self.angulo)
         
         for item in fase_model.itens_ruins:
-            item_servico.desenhar_item(item)
+            item_servico.desenhar_item(item,self.angulo)
             item_servico.movimento_item(item, tempo)
+            # item_servico.roda_item(item,self.angulo)
             if (item.posicao.y > 600):
                 novo_item = item_servico.reinicia_item(item)
                 fase_model.itens_ruins.remove(item)
