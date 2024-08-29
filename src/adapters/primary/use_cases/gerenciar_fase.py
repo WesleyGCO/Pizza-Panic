@@ -19,16 +19,21 @@ def iniciar_fase(jogo_model, jogo_ui, fase_ui, item_service, personagem_service)
         fase_service = FaseService(fase, fase_ui, item_service, personagem_service)
         fase_service.iniciar()
 
-        if fase.concluida:
+        if (fase.concluida):
             fase.concluir()
             pygame_output_adapter.tocar_som("conclusao_fase")
             jogo_model.fase_atual += 1
             jogo_ui.rodar_menu_fase(jogo_model, jogo_model.fase_atual)
+        elif (fase.perdida):
+            print("Você perdeu")
         else:
             break  
 
 def reiniciar_fase(personagem):
     personagem
+
+def setar_fase_perdida(fase_model):
+    fase_model.perdida = True
 
 def verificar_conclusao_fase(fase_model):
     if fase_model.pedido == fase_model.pedido_coletado:
