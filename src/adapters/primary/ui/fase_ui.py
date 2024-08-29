@@ -30,13 +30,10 @@ class FaseUI:
             self.angulo = 0
         else:
             self.angulo += 3
-
-        # print(self.angulo)
         
         for item in fase_model.itens_ruins:
-            item_servico.desenhar_item(item,self.angulo)
+            item_servico.desenhar_item(item, self.angulo)
             item_servico.movimento_item(item, tempo)
-            # item_servico.roda_item(item,self.angulo)
             if (item.posicao.y > 600):
                 novo_item = item_servico.reinicia_item(item)
                 fase_model.itens_ruins.remove(item)
