@@ -14,7 +14,9 @@ class Objeto:
         self.aceleracao = Vetor(x=0,y=0)
 
     def desenhar(self, tela, imagem):
+        print("Desenhei")
         tela.blit(pygame.transform.scale(imagem, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
+
 
     def processamento_fisica(self, tempo):
         self.posicao.x += self.velocidade.x * tempo + self.aceleracao.x * (tempo**2) * 0.5 

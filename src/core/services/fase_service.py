@@ -7,6 +7,9 @@ from core.services.personagem_service import PersonagemService
 from adapters.primary import pygame_output_adapter, pygame_input_adapter
 from adapters.primary.use_cases import gerenciar_fase
 from core.services.tempo_service import TempoService
+from application.models.Sprites import Sprites
+
+from adapters.primary.pygame_output_adapter import retornar_tela
 
 class FaseService(FaseInterface):
     
@@ -20,7 +23,13 @@ class FaseService(FaseInterface):
         
         self.tempo = 0
         self.relogio = pygame_output_adapter.criar_relogio()
-        self.FPS = 120        
+        self.FPS = 120     
+
+        self.sprites = Sprites()  
+        self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda()
+
+        self.ultima_posicao = ""
+
     
     def iniciar(self):
         print(f"Iniciando fase {self.fase_model.numero}")
@@ -32,7 +41,7 @@ class FaseService(FaseInterface):
         while self.is_running:
             self.fase_model.personagem.processamento_fisica(self.tempo_decorrido_seg)
             map(lambda item: item.processamento_fisica(self.tempo_decorrido_seg), self.fase_model.itens_ruins)
-            self.fase_ui.renderizar(self.fase_model, self.personagem_service, self.tempo_service, self.item_service, self.tempo_decorrido_seg)
+            self.fase_ui.renderizar(self.fase_model, self.personagem_service, self.tempo_service, self.item_service, self.tempo_decorrido_seg, self.sprite_atual)
             self.lidar_entrada()
             self.atualizar()
     
@@ -46,12 +55,16 @@ class FaseService(FaseInterface):
         
         if (tecla_pressionada['esquerda']):
             if isinstance(self.fase_model.personagem, Personagem):
+                self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda()
+                self.ultima_posicao = 'esquerda'
                 if(self.fase_model.personagem.posicao.x >= 0):
                     self.fase_model.personagem.velocidade.x = -500
                 else:
                     self.fase_model.personagem.velocidade.x = 0
         elif (tecla_pressionada['direita']):
             if isinstance(self.fase_model.personagem, Personagem):
+                self.sprite_atual =  self.sprites.get_personagem_sprite_direita()
+                self.ultima_posicao = 'direita'
                 if(self.fase_model.personagem.posicao.x <= 700):
                     self.fase_model.personagem.velocidade.x = +500
                 else:
@@ -59,6 +72,13 @@ class FaseService(FaseInterface):
         else:
             if isinstance(self.fase_model.personagem, Personagem):
                 self.fase_model.personagem.velocidade.x = 0
+                if(self.ultima_posicao == 'esquerda'):
+                    self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda_parado()
+                else:
+                    self.sprite_atual =  self.sprites.get_personagem_sprite_direita_parado()
+
+
+
     
     def atualizar(self):
         gerenciar_fase.verificar_conclusao_fase(self.fase_model)

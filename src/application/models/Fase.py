@@ -14,3 +14,5 @@ class Fase:
 
     def adicionar_pedido_coletado(self):
         self.pedido_coletado += 1
+
+    

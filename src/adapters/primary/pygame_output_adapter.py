@@ -56,9 +56,9 @@ def desenhar_item(item,angulo):
 def rotacionar_item(item):
     pass
 
-def desenhar_personagem(personagem):
+def desenhar_personagem(personagem,imagens):
     tela = retornar_tela()
-    return tela.blit(redimensionar_imagem(personagem.imagem_pizzaiolo, personagem.largura, personagem.altura), (personagem.posicao.x, personagem.posicao.y))
+    return tela.blit(redimensionar_imagem(imagens, personagem.largura, personagem.altura), (personagem.posicao.x, personagem.posicao.y))
     
 
 def criar_superficie(tamanho):
