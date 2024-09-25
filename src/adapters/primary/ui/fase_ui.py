@@ -28,19 +28,22 @@ class FaseUI:
         personagem_servico.desenhar_personagem(fase_model.personagem, sprite)
 
         tempo_servico.atualizar_contador(fase_model.personagem, self.posicao_x_texto, self.posicao_y_texto)
-        tempo_servico.contagem_regressiva(fase_model.tempo_inicial, self.tela_altura)
+        tempo_servico.contagem_regressiva(fase_model, self.tela_altura)
 
         if self.angulo >= 360:
             self.angulo = 0
         else:
+<<<<<<< HEAD
             self.angulo -= 3
 
         # print(self.angulo)
+=======
+            self.angulo += 3
+>>>>>>> refs/remotes/origin/main
         
         for item in fase_model.itens_ruins:
-            item_servico.desenhar_item(item,self.angulo)
+            item_servico.desenhar_rodar_item(item, self.angulo)
             item_servico.movimento_item(item, tempo)
-            # item_servico.roda_item(item,self.angulo)
             if (item.posicao.y > 600):
                 novo_item = item_servico.reinicia_item(item)
                 fase_model.itens_ruins.remove(item)

@@ -9,11 +9,8 @@ class ItemService(ItemInterface):
     def criar_item(self):
         return gerenciar_item.criar_item()
 
-    def desenhar_item(self, item, angulo):
-        return gerenciar_item.desenhar_item(item, angulo)
-
-    def roda_item(self, imagem,angulo):
-        return gerenciar_item.rodar_item(imagem,angulo)
+    def desenhar_rodar_item(self, item, angulo):
+        return gerenciar_item.desenhar_rodar_item(item, angulo)
 
     def movimento_item(self, itemMovimenta, tempo):
         # Verifica se o objeto é do tipo Item
