@@ -56,7 +56,7 @@ class FaseService(FaseInterface):
         
         if (tecla_pressionada['esquerda']):
             if isinstance(self.fase_model.personagem, Personagem):
-                self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda()
+                self.sprite_atual =  self.sprites.animar_personagem_esquerda()
                 self.ultima_posicao = 'esquerda'
                 if(self.fase_model.personagem.posicao.x >= 0):
                     self.fase_model.personagem.velocidade.x = -500
@@ -64,7 +64,7 @@ class FaseService(FaseInterface):
                     self.fase_model.personagem.velocidade.x = 0
         elif (tecla_pressionada['direita']):
             if isinstance(self.fase_model.personagem, Personagem):
-                self.sprite_atual =  self.sprites.get_personagem_sprite_direita()
+                self.sprite_atual =  self.sprites.animar_personagem_direita()
                 self.ultima_posicao = 'direita'
                 if(self.fase_model.personagem.posicao.x <= 700):
                     self.fase_model.personagem.velocidade.x = +500
