@@ -17,29 +17,21 @@ class FaseUI:
 
         self.angulo = 0
         
-    def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo, sprite):
+    def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo, sprite, jogo_model):
         pygame_output_adapter.preencher_tela((147, 158, 150))
         pygame_output_adapter.desenhar_superficie(self.imagem_redimensionada, (0, 0))
         
         menu_borda_ui(self.tela_altura, self.tela_largura)
 
-        
-        
         personagem_servico.desenhar_personagem(fase_model.personagem, sprite)
 
         tempo_servico.atualizar_contador(fase_model.personagem, self.posicao_x_texto, self.posicao_y_texto)
-        tempo_servico.contagem_regressiva(fase_model, self.tela_altura)
+        tempo_servico.contagem_regressiva(fase_model, self.tela_altura, self.tela_largura, jogo_model)
 
         if self.angulo >= 360:
             self.angulo = 0
         else:
-<<<<<<< HEAD
             self.angulo -= 3
-
-        # print(self.angulo)
-=======
-            self.angulo += 3
->>>>>>> refs/remotes/origin/main
         
         for item in fase_model.itens_ruins:
             item_servico.desenhar_rodar_item(item, self.angulo)

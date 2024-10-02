@@ -1,6 +1,7 @@
 from core.interfaces.TempoInterface import TempoInterface
 
 from adapters.primary import pygame_output_adapter
+from adapters.primary.use_cases import gerenciar_fase, gerenciar_jogo, gerenciar_menus
 
 class TempoService(TempoInterface):
     def atualizar_contador(self, personagem, posicao_x_texto, posicao_y_texto):
@@ -13,9 +14,16 @@ class TempoService(TempoInterface):
         superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto, (posicao_x_texto, posicao_y_texto))
 
-    def contagem_regressiva(self, fase_model, tela_altura):
+    def contagem_regressiva(self, fase_model, tela_altura, tela_largura, jogo_model):
         # Cria o tempo atual
         tempo_atual = pygame_output_adapter.devolve_tempo() // 1000        
-        tempo_formatado = "{:.0f}".format(max(0, fase_model.tempo_inicial - tempo_atual))
+        tempo_restante = max(0, fase_model.tempo_inicial - tempo_atual)
+        tempo_formatado = "{:.0f}".format(tempo_restante)
+        
+        # Desenha o tempo restante na tela
         superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto_relogio, (tela_altura - superficie_texto_relogio.get_width() - 10, 10))
+        
+        # Chama o rodar_menu_perdeu quando o tempo chegar a zero
+        if tempo_restante == 0:
+            gerenciar_jogo.setar_jogo_perdido(jogo_model)

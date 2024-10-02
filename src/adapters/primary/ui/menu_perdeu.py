@@ -15,8 +15,17 @@ class MenuPerdeuUI:
 
     def renderizar_menu_perdeu(self):
         # pygame_output_adapter.tocar_som("menu_perdeu")
+        
+        # Desenhar o aviso "Game Over!"
+        texto_game_over = pygame_output_adapter.renderizar_texto("Game Over!")
+        largura_texto_go, altura_texto_go = texto_game_over.get_size()
+        posicao_x_texto_go = (self.tela_largura - largura_texto_go) // 2
+        posicao_y_texto_go = (self.tela_altura - altura_texto_go) // 4
+        pygame_output_adapter.desenhar_superficie(texto_game_over, (posicao_x_texto_go, posicao_y_texto_go))
+        
+        # Desenhar o botão "Voltar ao menu"
         pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, self.botao_voltar_menu)
-        texto_botao = pygame_output_adapter.renderizar_texto("Encerrar jogo e voltar ao menu")
+        texto_botao = pygame_output_adapter.renderizar_texto("Voltar ao menu")
         largura_texto, altura_texto = texto_botao.get_size()
         posicao_x_texto = self.botao_voltar_menu.x + (self.botao_voltar_menu.width - largura_texto) // 2
         posicao_y_texto = self.botao_voltar_menu.y + (self.botao_voltar_menu.height - altura_texto) // 2

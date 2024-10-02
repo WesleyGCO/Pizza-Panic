@@ -13,13 +13,14 @@ from adapters.primary.pygame_output_adapter import retornar_tela
 
 class FaseService(FaseInterface):
     
-    def __init__(self, fase_model, fase_ui, item_service, personagem_service):
+    def __init__(self, fase_model, fase_ui, item_service, personagem_service, jogo_model):
         self.fase_model = fase_model
         self.fase_ui = fase_ui
         self.item_service = item_service
         self.personagem_service = personagem_service
         self.tempo_service = TempoService()
         self.is_running = False
+        self.jogo_model = jogo_model
         
         self.tempo = 0
         self.relogio = pygame_output_adapter.criar_relogio()
@@ -41,7 +42,7 @@ class FaseService(FaseInterface):
         while self.is_running:
             self.fase_model.personagem.processamento_fisica(self.tempo_decorrido_seg)
             map(lambda item: item.processamento_fisica(self.tempo_decorrido_seg), self.fase_model.itens_ruins)
-            self.fase_ui.renderizar(self.fase_model, self.personagem_service, self.tempo_service, self.item_service, self.tempo_decorrido_seg, self.sprite_atual)
+            self.fase_ui.renderizar(self.fase_model, self.personagem_service, self.tempo_service, self.item_service, self.tempo_decorrido_seg, self.sprite_atual, self.jogo_model)
             self.lidar_entrada()
             self.atualizar()
     
@@ -76,9 +77,6 @@ class FaseService(FaseInterface):
                     self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda_parado()
                 else:
                     self.sprite_atual =  self.sprites.get_personagem_sprite_direita_parado()
-
-
-
     
     def atualizar(self):
         gerenciar_fase.verificar_conclusao_fase(self.fase_model)

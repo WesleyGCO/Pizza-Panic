@@ -29,4 +29,4 @@ class ItemService(ItemInterface):
                     personagem.posicao.x < itemColide.posicao.x + itemColide.largura and
                     personagem.posicao.x + personagem.largura > itemColide.posicao.x and
                     personagem.posicao.y < itemColide.posicao.y + itemColide.altura and
-                    personagem.posicao.y + 5 > itemColide.posicao.y) # Considera apenas 5 pixels da altura do personagem
+                    personagem.posicao.y + 0.1 > itemColide.posicao.y) # Considera apenas 0.1 pixels da altura do personagem
