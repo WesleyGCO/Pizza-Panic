@@ -24,6 +24,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
         fase_ui = Mock()
         item_service = Mock(spec=ItemService)
         personagem_service = Mock(spec=PersonagemService)
+        jogo_model = Mock()
         sprites = Mock(spec=Sprites)
 
         # Configura o mock do personagem e inicializa posição e velocidade
@@ -36,7 +37,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
         mock_capturar_tecla.return_value = {'direita': True, 'esquerda': False}
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, jogo_model)
         fase_service.sprites = sprites
 
         fase_service.lidar_entrada()
@@ -45,6 +46,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
     def test_lidar_entrada_esquerda(self, mock_capturar_tecla):
         fase_model = Mock()
         fase_ui = Mock()
+        jogo_model = Mock()
         item_service = Mock(spec=ItemService)
         personagem_service = Mock(spec=PersonagemService)
         sprites = Mock(spec=Sprites)
@@ -58,7 +60,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
         mock_capturar_tecla.return_value = {'direita': False, 'esquerda': True}
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, jogo_model)
         fase_service.sprites = sprites
 
         fase_service.lidar_entrada()
@@ -70,6 +72,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
 
         fase_model = Mock()
         fase_ui = Mock()
+        jogo_model = Mock()
         item_service = Mock(spec=ItemService)
         personagem_service = Mock(spec=PersonagemService)
         sprites = Mock(spec=Sprites)
@@ -84,7 +87,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
         personagem_mock.posicao.x = 10
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, jogo_model)
         fase_service.sprites = sprites
 
         fase_model.personagem = personagem_mock
