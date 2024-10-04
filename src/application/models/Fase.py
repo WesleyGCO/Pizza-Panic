@@ -12,6 +12,11 @@ class Fase:
     def concluir(self):
         self.concluida = True
         print(f"Fase {self.numero} concluída!")
+        
+    def perdeu(self):
+        self.perdida = True
+        self.concluida = False
+        print(f"Fase {self.numero} perdida!")
 
     def adicionar_pedido_coletado(self):
         self.pedido_coletado += 1

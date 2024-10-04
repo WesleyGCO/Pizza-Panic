@@ -35,7 +35,7 @@ def rodar_menu_fase(menu_fase, jogo_model, numero_fase):
                 return True
             elif (resultado_fase == "Voltar ao menu"):
                 rodando_menu_fase = False
-                return 
+                return False
                 
         menu_fase.renderizar_menu_fase()
         pygame_output_adapter.atualizacao_tela()
@@ -44,7 +44,6 @@ def rodar_menu_fase(menu_fase, jogo_model, numero_fase):
 def rodar_menu_perdeu(tela_altura, tela_largura):
     
     menu_perdeu = MenuPerdeuUI(tela_altura, tela_largura)
-    menu_inicial = MenuInicialUI(tela_largura, tela_altura)
     
     rodando_menu_perdeu = True
     while rodando_menu_perdeu:
@@ -56,8 +55,7 @@ def rodar_menu_perdeu(tela_altura, tela_largura):
             resultado_perdeu = menu_perdeu.lidar_entrada_menu_perdeu(evento)
             if resultado_perdeu == "Voltar ao menu":
                 rodando_menu_perdeu = False
-                pygame_output_adapter.preencher_tela((0,0,0))
-                rodar_menu_inicial(menu_inicial)
+                return False
 
         menu_perdeu.renderizar_menu_perdeu()
         pygame_output_adapter.atualizacao_tela()

@@ -142,7 +142,8 @@ sons = {
     "menu_inicial": pygame.mixer.Sound(SONS_DIR + "musica fundo inicial.mp3"),
     "lancamento": pygame.mixer.Sound(SONS_DIR + "lancamento.mp3"),
     "erro_item": pygame.mixer.Sound(SONS_DIR + "error.mp3"),
-    "conclusao_fase": pygame.mixer.Sound(SONS_DIR + "Sucesso fase.mp3")
+    "conclusao_fase": pygame.mixer.Sound(SONS_DIR + "Sucesso fase.mp3"),
+    "perdeu_fase": pygame.mixer.Sound(SONS_DIR + "perdeu fase.mp3")
 }
 
 sons["menu_inicial"].set_volume(configuracoes["sons"]["volume_menu_inicial"])
