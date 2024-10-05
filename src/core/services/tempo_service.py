@@ -5,7 +5,7 @@ from adapters.primary.use_cases import gerenciar_fase, gerenciar_jogo, gerenciar
 
 class TempoService(TempoInterface):
     
-    def _init__(self):
+    def __init__(self):
         self.tempo_restante = 1
     
     def atualizar_contador(self, personagem, posicao_x_texto, posicao_y_texto):
@@ -18,18 +18,23 @@ class TempoService(TempoInterface):
         superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto, (posicao_x_texto, posicao_y_texto))
 
-    def contagem_regressiva(self, fase_model, tela_altura, tempo):
+    def contagem_regressiva(self, fase_model, tela_altura):        
         # Cria o tempo atual
         tempo_atual = pygame_output_adapter.devolve_tempo() // 1000
         
-        # print("Tempo atual: ", tempo_atual)
-        self.tempo_restante = max(0, fase_model.tempo_inicial - tempo_atual)
-        # print("Tempo restante: ", self.tempo_restante)
-        tempo_formatado = "{:.0f}".format(self.tempo_restante)
+        if (tempo_atual <= fase_model.tempo_inicial):
+            self.tempo_restante = max(0, fase_model.tempo_inicial - tempo_atual)
+            tempo_formatado = "{:.0f}".format(self.tempo_restante)            
+        
+        if (tempo_atual > fase_model.tempo_inicial):
+            # Calcular o tempo excedente
+            tempo_excedente = tempo_atual - fase_model.tempo_inicial
+            self.tempo_restante = max(0, fase_model.tempo_inicial - tempo_excedente)  # Tempo restante não pode ser negativo
+            tempo_formatado = "{:.0f}".format(self.tempo_restante)  # Formata o tempo restante
+            
+        if (self.tempo_restante == 0):
+            return gerenciar_fase.setar_fase_perdida(fase_model)
         
         # Desenha o tempo restante na tela
         superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto_relogio, (tela_altura - superficie_texto_relogio.get_width() - 10, 10))
-        
-        if self.tempo_restante == 0:
-            gerenciar_fase.setar_fase_perdida(fase_model)

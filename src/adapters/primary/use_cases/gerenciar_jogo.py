@@ -17,7 +17,6 @@ def iniciar_jogo(tamanho_tela_largura, tamanho_tela_altura):
     tempo_service = TempoService()
     menu_inicial = MenuInicialUI(tamanho_tela_altura, tamanho_tela_largura)
     menu_fase = MenuFaseUI(tamanho_tela_largura, tamanho_tela_altura)
-    menu_perdeu = MenuPerdeuUI(tamanho_tela_largura, tamanho_tela_altura)
     
     while True:
         if (gerenciar_menus.rodar_menu_inicial(menu_inicial)):

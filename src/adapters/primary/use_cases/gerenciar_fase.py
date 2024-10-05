@@ -6,7 +6,7 @@ def setar_fase(jogo_model, numero_fase):
     jogo_model.fase_atual = numero_fase
   
 def criar_fase(numero_fase, personagem, itens_ruins):
-    tempo_inicial = 10  
+    tempo_inicial = 5  
     pedido = 3 + (numero_fase - 1) * 5  
     
     return Fase(numero_fase, personagem, itens_ruins, tempo_inicial, pedido)
