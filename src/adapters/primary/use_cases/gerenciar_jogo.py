@@ -8,12 +8,11 @@ from adapters.primary.ui.menu_inicial import MenuInicialUI
 from adapters.primary.ui.menu_perdeu import MenuPerdeuUI
 from core.services.item_service import ItemService
 from core.services.personagem_service import PersonagemService
-# from core.services.tempo_service import TempoService
+from core.services.tempo_service import TempoService
 
 def iniciar_jogo(tamanho_tela_largura, tamanho_tela_altura):
     jogo_model = Jogo()
     personagem_service = PersonagemService()
-    from core.services.tempo_service import TempoService
     item_service = ItemService()
     tempo_service = TempoService()
     menu_inicial = MenuInicialUI(tamanho_tela_altura, tamanho_tela_largura)
