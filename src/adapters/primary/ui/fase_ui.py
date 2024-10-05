@@ -36,7 +36,7 @@ class FaseUI:
         else:
             self.angulo -= 3
 
-        print(self.angulo)
+        # print(self.angulo)
         
         for item in fase_model.itens_ruins:
             item_servico.desenhar_rodar_item(item, self.angulo)
