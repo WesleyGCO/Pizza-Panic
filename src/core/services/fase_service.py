@@ -29,7 +29,7 @@ class FaseService(FaseInterface):
         
         self.tempo = 0
         self.relogio = pygame_output_adapter.criar_relogio()
-        self.FPS = 120     
+        self.FPS = 120
 
         self.sprites = Sprites()  
         self.sprite_atual =  self.sprites.get_personagem_sprite_esquerda()

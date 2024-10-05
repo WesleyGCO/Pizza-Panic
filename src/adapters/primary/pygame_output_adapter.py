@@ -79,6 +79,7 @@ def redimensionar_imagem(imagem, altura, largura):
 #endregion Desenhar
 
 #region Geral
+
 def criar_relogio():
     return pygame.time.Clock()
 

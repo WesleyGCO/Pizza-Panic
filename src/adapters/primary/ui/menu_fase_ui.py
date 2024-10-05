@@ -6,8 +6,6 @@ class MenuFaseUI:
         self.tela_largura = tela_largura
         botao_largura = 200
         botao_altura = 50
-
-        print(self.tela_largura, " + ", self.tela_altura)
         
         # Centraliza os botões horizontalmente
         botao_posicao_x = (tela_largura - botao_largura) // 2

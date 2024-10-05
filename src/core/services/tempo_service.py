@@ -18,10 +18,12 @@ class TempoService(TempoInterface):
         superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto, (posicao_x_texto, posicao_y_texto))
 
-    def contagem_regressiva(self, fase_model, tela_altura):
+    def contagem_regressiva(self, fase_model, tela_altura, tempo):
         # Cria o tempo atual
-        tempo_atual = pygame_output_adapter.devolve_tempo() // 1000        
-        self.tempo_restante = max(0, fase_model.tempo_inicial - tempo_atual)
+        tempo_atual = pygame_output_adapter.devolve_tempo() // 1000
+        print("Tempo atual: ", tempo_atual)
+        self.tempo_restante = max(0, fase_model.tempo_inicial - (tempo_atual + fase_model.tempo_inicial))
+        print("Tempo restante: ", self.tempo_restante)
         tempo_formatado = "{:.0f}".format(self.tempo_restante)
         
         # Desenha o tempo restante na tela

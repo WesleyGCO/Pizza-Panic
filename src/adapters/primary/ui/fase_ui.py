@@ -26,7 +26,7 @@ class FaseUI:
         personagem_servico.desenhar_personagem(fase_model.personagem, sprite)
 
         tempo_servico.atualizar_contador(fase_model.personagem, self.posicao_x_texto, self.posicao_y_texto)
-        tempo_servico.contagem_regressiva(fase_model, self.tela_altura)
+        tempo_servico.contagem_regressiva(fase_model, self.tela_altura, tempo)
 
         if self.angulo >= 360:
             self.angulo = 0
