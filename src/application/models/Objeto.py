@@ -1,6 +1,6 @@
 from adapters.primary import pygame_output_adapter
 from application.models.Vetor import Vetor
-import random, pygame # type: ignore
+import pygame # type: ignore
 
 class Objeto:
     def __init__(self, x, y, largura, altura):
@@ -14,7 +14,6 @@ class Objeto:
         self.aceleracao = Vetor(x=0,y=0)
 
     def desenhar(self, tela, imagem):
-        print("Desenhei")
         tela.blit(pygame.transform.scale(imagem, (self.largura, self.altura)), (self.posicao.x, self.posicao.y))
 
 

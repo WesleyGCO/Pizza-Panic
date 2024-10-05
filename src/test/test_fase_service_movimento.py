@@ -3,15 +3,17 @@ from unittest.mock import Mock, patch
 import sys
 import os
 
+from core.services.tempo_servico import TempoService
+
 # Adiciona o caminho 'src' ao sys.path para permitir importações de módulos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from unittest.mock import Mock, patch
 from application.models.Personagem import Personagem
 from adapters.primary.pygame_input_adapter import capturar_tecla
-from core.services.personagem_service import PersonagemService
-from core.services.item_service import ItemService
-from core.services.fase_service import FaseService
+from core.services.personagem_servico import PersonagemService
+from core.services.item_servico import ItemService
+from core.services.fase_servico import FaseService
 from application.models.Sprites import Sprites
 
 
@@ -23,7 +25,9 @@ class TestFaseServiceMovimento(unittest.TestCase):
         fase_model = Mock()
         fase_ui = Mock()
         item_service = Mock(spec=ItemService)
+        tempo_service = Mock(spec=TempoService)
         personagem_service = Mock(spec=PersonagemService)
+        jogo_model = Mock()
         sprites = Mock(spec=Sprites)
 
         # Configura o mock do personagem e inicializa posição e velocidade
@@ -32,11 +36,14 @@ class TestFaseServiceMovimento(unittest.TestCase):
         fase_model.personagem.velocidade = Mock()  # Mock para a velocidade do personagem
         fase_model.personagem.posicao.x = 10  # Define a posição inicial x do personagem
 
+        tamanho_tela_largura = 800
+        tamanho_tela_altura = 600
+
         # Simula o comportamento de teclas pressionadas (tecla direita)
         mock_capturar_tecla.return_value = {'direita': True, 'esquerda': False}
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, tempo_service, jogo_model, tamanho_tela_largura, tamanho_tela_altura)
         fase_service.sprites = sprites
 
         fase_service.lidar_entrada()
@@ -45,10 +52,14 @@ class TestFaseServiceMovimento(unittest.TestCase):
     def test_lidar_entrada_esquerda(self, mock_capturar_tecla):
         fase_model = Mock()
         fase_ui = Mock()
+        jogo_model = Mock()
         item_service = Mock(spec=ItemService)
+        tempo_service = Mock(spec=TempoService)
         personagem_service = Mock(spec=PersonagemService)
         sprites = Mock(spec=Sprites)
 
+        tamanho_tela_largura = 800
+        tamanho_tela_altura = 600
 
         fase_model.personagem = Mock(spec=Personagem)
         fase_model.personagem.posicao = Mock()
@@ -58,7 +69,7 @@ class TestFaseServiceMovimento(unittest.TestCase):
         mock_capturar_tecla.return_value = {'direita': False, 'esquerda': True}
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, tempo_service, jogo_model, tamanho_tela_largura, tamanho_tela_altura)
         fase_service.sprites = sprites
 
         fase_service.lidar_entrada()
@@ -70,9 +81,13 @@ class TestFaseServiceMovimento(unittest.TestCase):
 
         fase_model = Mock()
         fase_ui = Mock()
+        jogo_model = Mock()
         item_service = Mock(spec=ItemService)
+        tempo_service = Mock(spec=TempoService)
         personagem_service = Mock(spec=PersonagemService)
         sprites = Mock(spec=Sprites)
+        tamanho_tela_largura = 800
+        tamanho_tela_altura = 600
         
         mock_capturar_tecla.return_value = {
             'esquerda': False, 'direita': False}
@@ -84,7 +99,8 @@ class TestFaseServiceMovimento(unittest.TestCase):
         personagem_mock.posicao.x = 10
 
         fase_service = FaseService(
-            fase_model, fase_ui, item_service, personagem_service)
+            fase_model, fase_ui, item_service, personagem_service, tempo_service, jogo_model, tamanho_tela_largura, tamanho_tela_altura)
+
         fase_service.sprites = sprites
 
         fase_model.personagem = personagem_mock

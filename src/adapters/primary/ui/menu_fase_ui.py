@@ -6,8 +6,6 @@ class MenuFaseUI:
         self.tela_largura = tela_largura
         botao_largura = 200
         botao_altura = 50
-
-        print(self.tela_largura, " + ", self.tela_altura)
         
         # Centraliza os botões horizontalmente
         botao_posicao_x = (tela_largura - botao_largura) // 2
@@ -19,7 +17,6 @@ class MenuFaseUI:
         botao_posicao_y = (tela_altura - (3 * botao_altura + 2 * espaco_entre_botoes)) // 2
         
         self.botao_proxima_fase = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y, botao_largura, botao_altura)
-        self.botao_reiniciar = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y + botao_altura + espaco_entre_botoes, botao_largura, botao_altura)
         self.botao_voltar_menu = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y + 2 * (botao_altura + espaco_entre_botoes), botao_largura, botao_altura)
         
         self.cor_botao_hover = (5, 40, 97)
@@ -35,14 +32,6 @@ class MenuFaseUI:
 
         pygame_output_adapter.desenhar_superficie(texto_botao_proxima, (posicao_x_texto_proxima, posicao_y_texto_proxima))
 
-        # Desenha e centraliza o texto no botão "Reiniciar"
-        pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, self.botao_reiniciar)
-        texto_botao_reiniciar = pygame_output_adapter.renderizar_texto("Reiniciar fase")
-        texto_largura, texto_altura = texto_botao_reiniciar.get_size()
-        posicao_x_texto_reiniciar = self.botao_reiniciar.x + (self.botao_reiniciar.width - texto_largura) // 2
-        posicao_y_texto_reiniciar = self.botao_reiniciar.y + (self.botao_reiniciar.height - texto_altura) // 2
-        pygame_output_adapter.desenhar_superficie(texto_botao_reiniciar, (posicao_x_texto_reiniciar, posicao_y_texto_reiniciar))
-
         # Desenha e centraliza o texto no botão "Voltar ao menu"
         pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, self.botao_voltar_menu)
         texto_botao_voltar_menu = pygame_output_adapter.renderizar_texto("Voltar ao menu")
@@ -55,8 +44,7 @@ class MenuFaseUI:
         if (pygame_input_adapter.clicado(evento)):
             if (self.botao_proxima_fase.collidepoint(evento.pos)):
                 return "Próxima fase"
-            elif (self.botao_reiniciar.collidepoint(evento.pos)):
-                return "Reiniciar fase"
+            
             elif (self.botao_voltar_menu.collidepoint(evento.pos)):
                 return "Voltar ao menu"
         
