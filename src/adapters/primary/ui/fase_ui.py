@@ -25,6 +25,7 @@ class FaseUI:
 
         
         
+        
         personagem_servico.desenhar_personagem(fase_model.personagem, sprite)
 
         tempo_servico.atualizar_contador(fase_model.personagem, self.posicao_x_texto, self.posicao_y_texto)
@@ -33,13 +34,9 @@ class FaseUI:
         if self.angulo >= 360:
             self.angulo = 0
         else:
-<<<<<<< HEAD
             self.angulo -= 3
 
         # print(self.angulo)
-=======
-            self.angulo += 3
->>>>>>> refs/remotes/origin/main
         
         for item in fase_model.itens_ruins:
             item_servico.desenhar_rodar_item(item, self.angulo)
