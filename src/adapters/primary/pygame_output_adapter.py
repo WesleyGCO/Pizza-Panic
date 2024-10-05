@@ -33,16 +33,13 @@ def preencher_superficie(superficie, cor):
 
 def desenhar_rodar_item(item, angulo):
     imagem = redimensionar_imagem(item.imagem, item.largura, item.altura)
-    rotated_image = pygame.transform.rotate(imagem, angulo)
-    image_rect = item.imagem.get_rect(center=(item.posicao.x, item.posicao.y))  # Posiciona a imagem no centro da tela
-    rotated_rect = rotated_image.get_rect(center=image_rect.center)
+    imgame_rodada = pygame.transform.rotate(imagem, angulo)
+    image_centro = item.imagem.get_rect(center=(item.posicao.x, item.posicao.y))  # Posiciona a imagem no centro da tela
+    rodada_centro = imgame_rodada.get_rect(center=image_centro.center)
 
     tela = retornar_tela()
 
-    return tela.blit(rotated_image,rotated_rect)
-
-def rotacionar_item(item):
-    pass
+    return tela.blit(imgame_rodada, rodada_centro)
 
 def desenhar_personagem(personagem,imagens):
     tela = retornar_tela()
@@ -140,7 +137,7 @@ SONS_DIR = configuracoes['sons']['sons_dir']
 
 # Dicionário de sons
 sons = {
-    "menu_inicial": pygame.mixer.Sound(SONS_DIR + "musica fundo inicial.mp3"),
+    "menu_inicial": pygame.mixer.Sound(SONS_DIR + "musica fundo 2.mp3"),
     "lancamento": pygame.mixer.Sound(SONS_DIR + "lancamento.mp3"),
     "erro_item": pygame.mixer.Sound(SONS_DIR + "error.mp3"),
     "conclusao_fase": pygame.mixer.Sound(SONS_DIR + "Sucesso fase.mp3"),

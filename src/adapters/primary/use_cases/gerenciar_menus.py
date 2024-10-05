@@ -1,6 +1,5 @@
 from adapters.primary import pygame_input_adapter, pygame_output_adapter
-from adapters.primary.ui.menu_perdeu import MenuPerdeuUI
-from adapters.primary.ui.menu_inicial import MenuInicialUI
+from adapters.primary.ui.menu_perdeu_ui import MenuPerdeuUI
 from adapters.primary.use_cases import gerenciar_fase
 
 def rodar_menu_inicial(menu_inicial):

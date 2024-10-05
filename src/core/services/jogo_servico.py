@@ -16,4 +16,4 @@ class JogoService(JogoInterface):
         gerenciar_jogo.iniciar_jogo(self.tamanho_tela_largura, self.tamanho_tela_altura)
                 
     def encerrar_jogo(self):
-        pygame_output_adapter.sair()
+        gerenciar_jogo.encerrar_jogo()

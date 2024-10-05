@@ -1,26 +1,19 @@
 from application.models.Personagem import Personagem
+from application.models.Sprites import Sprites
 
 from core.interfaces.FaseInterface import FaseInterface
-from core.services.item_service import ItemService
-from core.services.personagem_service import PersonagemService
-
-from adapters.primary.use_cases import gerenciar_menus, gerenciar_jogo
 
 from adapters.primary import pygame_output_adapter, pygame_input_adapter
 from adapters.primary.use_cases import gerenciar_fase
-from core.services.tempo_service import TempoService
-from application.models.Sprites import Sprites
-
-from adapters.primary.pygame_output_adapter import retornar_tela
 
 class FaseService(FaseInterface):
     
-    def __init__(self, fase_model, fase_ui, item_service, personagem_service, tempo_service, jogo_model, tamanho_tela_largura, tamanho_tela_altura):
+    def __init__(self, fase_model, fase_ui, item_servico, personagem_servico, tempo_servico, jogo_model, tamanho_tela_largura, tamanho_tela_altura):
         self.fase_model = fase_model
         self.fase_ui = fase_ui
-        self.item_service = item_service
-        self.personagem_service = personagem_service
-        self.tempo_service = tempo_service
+        self.item_servico = item_servico
+        self.personagem_servico = personagem_servico
+        self.tempo_servico = tempo_servico
         self.is_running = False
         self.jogo_model = jogo_model
         
@@ -47,7 +40,7 @@ class FaseService(FaseInterface):
         while self.is_running:
             self.fase_model.personagem.processamento_fisica(self.tempo_decorrido_seg)
             map(lambda item: item.processamento_fisica(self.tempo_decorrido_seg), self.fase_model.itens_ruins)
-            self.fase_ui.renderizar(self.fase_model, self.personagem_service, self.tempo_service, self.item_service, self.tempo_decorrido_seg, self.sprite_atual, self.jogo_model)
+            self.fase_ui.renderizar(self.fase_model, self.personagem_servico, self.tempo_servico, self.item_servico, self.tempo_decorrido_seg, self.sprite_atual)
             self.lidar_entrada()
             self.atualizar()
     
@@ -92,10 +85,10 @@ class FaseService(FaseInterface):
             self.is_running = False
 
         for item in self.fase_model.itens_ruins:
-            if self.item_service.checa_colisao(self.fase_model.personagem, item):
-                self.personagem_service.adicionar_pontuacao(self.fase_model.personagem, item)
+            if self.item_servico.checa_colisao(self.fase_model.personagem, item):
+                self.personagem_servico.adicionar_pontuacao(self.fase_model.personagem, item)
                 self.contar_pedido(self.fase_model, item)
-                novo_item = self.item_service.reinicia_item(item)
+                novo_item = self.item_servico.reinicia_item(item)
                 self.fase_model.itens_ruins.remove(item)
                 self.fase_model.itens_ruins.append(novo_item)
         

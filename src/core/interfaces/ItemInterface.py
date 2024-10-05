@@ -4,6 +4,10 @@ class ItemInterface(ABC):
     @abstractmethod
     def criar_item():
         pass
+    
+    @abstractmethod
+    def desenhar_rodar_item():
+        pass
 
     @abstractmethod
     def movimento_item():

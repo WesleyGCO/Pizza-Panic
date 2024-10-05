@@ -9,7 +9,6 @@ class Personagem(Objeto):
         super().__init__(x, y, largura, altura)
         self.cor = cor
         self.aceleracao.x = aceleracao
-        # self.imagem_pizzaiolo = pygame_output_adapter.carregar_imagem("./adapters/primary/sprites/pizzaiolo.png")
         self.pontuacao_personagem = 0
 
     def adicionar_pontuacao(self, pontuacao):

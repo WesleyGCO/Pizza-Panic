@@ -1,6 +1,6 @@
 from adapters.primary import pygame_output_adapter
 from adapters.primary.ui.menu_borda_ui import menu_borda_ui
-from core.services.placar_service import PlacarService
+from core.services.placar_servico import PlacarService
 from application.models.Sprites import Sprites
 
 class FaseUI:
@@ -12,12 +12,12 @@ class FaseUI:
         self.posicao_y_texto = posicao_y_texto
         self.imagem = pygame_output_adapter.carregar_imagem("./adapters/primary/sprites/fundo8x6.png")
         self.imagem_redimensionada = pygame_output_adapter.redimensionar_imagem(self.imagem, self.tela_altura, self.tela_largura)
-        self.placar_service = PlacarService()
+        self.placar_servico = PlacarService()
         self.sprites = Sprites()
 
         self.angulo = 0
         
-    def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo, sprite, jogo_model):
+    def renderizar(self, fase_model, personagem_servico, tempo_servico, item_servico, tempo, sprite):
         pygame_output_adapter.preencher_tela((147, 158, 150))
         pygame_output_adapter.desenhar_superficie(self.imagem_redimensionada, (0, 0))
         
@@ -41,7 +41,7 @@ class FaseUI:
                 fase_model.itens_ruins.remove(item)
                 fase_model.itens_ruins.append(novo_item)
         
-        self.placar_service.renderizar_placar(fase_model)
+        self.placar_servico.renderizar_placar(fase_model)
         
         pygame_output_adapter.atualizacao_display()
         self.relogio.tick(60)

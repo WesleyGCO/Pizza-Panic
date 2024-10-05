@@ -34,7 +34,6 @@ class MenuPerdeuUI:
     def lidar_entrada_menu_perdeu(self, evento):
         if (pygame_input_adapter.clicado(evento)):
             if (self.botao_voltar_menu.collidepoint(evento.pos)):
-                # pygame_output_adapter.parar_som("menu_perdeu")
                 return "Voltar ao menu"
             
         else:

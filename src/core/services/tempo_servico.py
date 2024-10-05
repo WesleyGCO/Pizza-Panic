@@ -1,7 +1,7 @@
 from core.interfaces.TempoInterface import TempoInterface
 
 from adapters.primary import pygame_output_adapter
-from adapters.primary.use_cases import gerenciar_fase, gerenciar_jogo, gerenciar_menus
+from adapters.primary.use_cases import gerenciar_fase
 
 class TempoService(TempoInterface):
     

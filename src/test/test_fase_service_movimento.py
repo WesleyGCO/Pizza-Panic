@@ -3,7 +3,7 @@ from unittest.mock import Mock, patch
 import sys
 import os
 
-from core.services.tempo_service import TempoService
+from core.services.tempo_servico import TempoService
 
 # Adiciona o caminho 'src' ao sys.path para permitir importações de módulos
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -11,9 +11,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unittest.mock import Mock, patch
 from application.models.Personagem import Personagem
 from adapters.primary.pygame_input_adapter import capturar_tecla
-from core.services.personagem_service import PersonagemService
-from core.services.item_service import ItemService
-from core.services.fase_service import FaseService
+from core.services.personagem_servico import PersonagemService
+from core.services.item_servico import ItemService
+from core.services.fase_servico import FaseService
 from application.models.Sprites import Sprites
 
 
