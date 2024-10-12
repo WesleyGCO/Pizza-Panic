@@ -1,16 +1,16 @@
 from core.interfaces.TempoInterface import TempoInterface
 
 from adapters.primary import pygame_output_adapter
-from adapters.primary.use_cases import gerenciar_fase
+from adapters.primary.use_cases import gerenciar_fase, gerenciar_personagem
 
 class TempoService(TempoInterface):    
     def atualizar_contador(self, personagem, posicao_x_texto, posicao_y_texto):
-        # Desenha a quantidade de itens coletados na tela
         
-        if (personagem.pontuacao_personagem <= 0):
-            texto_itens_coletados = f"Pontuação: {personagem.pontuacao_personagem}"
-        else:
-            texto_itens_coletados = f"Pontuação: {personagem.pontuacao_personagem}"
+        if (personagem.pontuacao_personagem < 0):
+            gerenciar_personagem.ajustar_pontuacao(personagem)
+        
+        # Desenha a quantidade de itens coletados na tela
+        texto_itens_coletados = f"Pontuação: {personagem.pontuacao_personagem}"
 
         superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (0, 0, 0))
         pygame_output_adapter.desenhar_superficie(superficie_texto, (posicao_x_texto, posicao_y_texto))

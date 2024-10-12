@@ -7,3 +7,6 @@ def criar_personagem(tela_largura, tela_altura, posicao_x_ratio, posicao_y_ratio
 
 def desenhar_personagem(personagem, imagens):
         pygame_output_adapter.desenhar_personagem(personagem, imagens)
+        
+def ajustar_pontuacao(personagem):
+        personagem.pontuacao_personagem = 0
