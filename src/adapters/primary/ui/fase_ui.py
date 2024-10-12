@@ -22,9 +22,6 @@ class FaseUI:
         pygame_output_adapter.desenhar_superficie(self.imagem_redimensionada, (0, 0))
         
         menu_borda_ui(self.tela_altura, self.tela_largura)
-
-        
-        
         
         personagem_servico.desenhar_personagem(fase_model.personagem, sprite)
 

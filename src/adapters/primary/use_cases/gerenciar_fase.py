@@ -24,9 +24,10 @@ def criar_fase(numero_fase, personagem, itens_ruins):
         Fase: Instância da classe Fase.
     """
     tempo_inicial = 60  # Tempo padrão inicial para todas as fases
-    pedido = 3 + (numero_fase - 1) * 5  # Quantidade de pedidos necessária para completar a fase
+    pedido = 10 + (numero_fase - 1) * 5  # Quantidade de pedidos necessária para completar a fase
+    tempo_fase_comeca = pygame_output_adapter.devolve_tempo()
     
-    return Fase(numero_fase, personagem, itens_ruins, tempo_inicial, pedido)
+    return Fase(numero_fase, personagem, itens_ruins, tempo_inicial, pedido, tempo_fase_comeca)
 
 def iniciar_fase(menu_fase, jogo_model, jogo_ui, fase_ui, item_servico, personagem_servico, tempo_servico, largura_tela, altura_tela):
     """

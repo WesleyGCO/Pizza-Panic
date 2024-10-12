@@ -1,7 +1,4 @@
-import pygame # type: ignore
-
 from application.models.Objeto import Objeto
-from adapters.primary import pygame_output_adapter
 
 class Personagem(Objeto):
 

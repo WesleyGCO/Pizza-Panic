@@ -22,3 +22,6 @@ def clicado(evento):
         return True
     else:
         return False
+    
+def mouse_posicao():
+    return pygame.mouse.get_pos()

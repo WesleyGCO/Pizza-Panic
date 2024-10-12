@@ -30,7 +30,7 @@ class MenuFaseUI:
         self.botao_voltar_menu = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y + 2 * (botao_altura + espaco_entre_botoes), botao_largura, botao_altura)
 
         # Cores dos botões
-        self.cor_botao_hover = (5, 40, 97)
+        self.cor_botao_hover = (15, 99, 245)
         self.cor_botao_normal = (5, 40, 97)
 
     def renderizar_menu_fase(self):
@@ -49,8 +49,17 @@ class MenuFaseUI:
             botao (pygame.Rect): Retângulo representando o botão.
             texto (str): Texto a ser exibido no botão.
         """
+        
+        mouse_pos = pygame_input_adapter.mouse_posicao()
+        
+        # Verificar se o mouse está sobre o botão
+        if botao.collidepoint(mouse_pos):
+            cor_atual = self.cor_botao_hover
+        else:
+            cor_atual = self.cor_botao_normal
+        
         # Desenhar o botão
-        pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, botao)
+        pygame_output_adapter.desenhar_botao_retangulo(cor_atual, botao)
 
         # Centralizar o texto no botão
         texto_renderizado = pygame_output_adapter.renderizar_texto(texto)
