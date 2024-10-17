@@ -24,44 +24,58 @@ Pizza Panic utiliza a Arquitetura Hexagonal (ou Arquitetura de Portos e Adaptado
 ```bash
 ├── src/
 │ ├── adapters/
-│ │ ├── implementations/
-│ │ │ ├── JogoServiceImpl.py
-│ │ │ ├── FaseServiceImpl.py
-│ │ │ ├── ItemServiceImpl.py
-│ │ ├── repositories/
-│ │──assets/
-│ │ ├── Imagens/
-│ │ ├── Sons e efeitos sonoros/
-│ ├── core/
-│ │ ├── entities/
-│ │ │ ├── Espatula.py
-│ │ │ ├── Pano.py
-│ │ │ ├── Personagem.py
-│ │ │ ├── Pizza.py
+│ │ ├── primary/
+│ │ │ ├── sons/
+│ │ │ ├── sprites/
+│ │ │ ├── ui/
+│ │ │ │ ├── fase_ui.py
+│ │ │ │ ├── jogo_ui.py
+│ │ │ │ ├── menu_borda_ui.py
+│ │ │ │ ├── menu_fase_ui.py
+│ │ │ │ ├── menu_inicial_ui.py
+│ │ │ │ ├── menu_perdeu_ui.py
+│ │ │ ├── use_cases/
+│ │ │ │ ├── gerenciar_fase.py
+│ │ │ │ ├── gerenciar_item.py
+│ │ │ │ ├── gerenciar_jogo.py
+│ │ │ │ ├── gerenciar_menus.py
+│ │ │ │ ├── gerenciar_personagem.py
+│ │ │ │ ├── gerenciar_placar.py
+│ │ ├── pygame_input_adapter.py
+│ │ ├── pygame_output_adapter.py
+│ ├── application/
+│ │ ├── models/
 │ │ │ ├── Fase.py
-│ │ │ ├── FaseUm.py
-│ │ │ ├── FaseDois.py
-│ │ │ ├── FaseTres.py
-│ │ │ ├── FaseQuatro.py
-│ │ │ ├── FaseCinco.py
+│ │ │ ├── Item.py
+│ │ │ ├── Jogo.py
 │ │ │ ├── Objeto.py
+│ │ │ ├── Personagem.py
+│ │ │ ├── Sprites.py
 │ │ │ ├── Vetor.py
+│ ├── config/
+│ │ ├── config.py
+│ ├── core/
 │ │ ├── interfaces/
-│ │ │ ├── ItemInterface.py
 │ │ │ ├── FaseInterface.py
+│ │ │ ├── ItemInterface.py
 │ │ │ ├── JogoInterface.py
 │ │ │ ├── PersonagemInterface.py
+│ │ │ ├── PlacarInterface.py
 │ │ │ ├── TempoInterface.py
-│ ├── ports/
-│ │ ├── ui/
-│ │ │ ├── ItemUI.py
-│ │ │ ├── FaseUI.py
-│ │ │ ├── JogoUI.py
-│ │ │ ├── MenuBordaUI.py
-│ │ │ ├── MenuFaseUI.py
-│ │ │ ├── MenuInicialUI.py
-│ │ │ ├── PlacarFaseUI.py
+│ │ ├── services/
+│ │ │ ├── fase_servico.py
+│ │ │ ├── item_servico.py
+│ │ │ ├── jogo_servico.py
+│ │ │ ├── personagem_servico.py
+│ │ │ ├── placar_servico.py
+│ │ │ ├── pontuacao_servico.py
+│ │ │ ├── randomizacao_servico.py
+│ │ │ ├── tempo_servico.py
+│ ├── test/
+│ │ ├── test_fase_service_movimento.py
 │ ├── main.py
+│ ├── settings.json
+│ ├── requirements.txt
 ```
 
 ### Benefícios da Arquitetura Hexagonal
