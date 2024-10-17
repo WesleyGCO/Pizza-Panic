@@ -10,7 +10,7 @@ class MenuPerdeuUI:
         botao_posicao_x = (tela_largura - botao_largura) // 2
         botao_posicao_y = (tela_altura - botao_altura) // 2
         self.botao_voltar_menu = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y, botao_largura, botao_altura)
-        self.cor_botao_hover = (5, 40, 97)
+        self.cor_botao_hover = (15, 99, 245)
         self.cor_botao_normal = (5, 40, 97)
 
     def renderizar_menu_perdeu(self):
@@ -23,8 +23,16 @@ class MenuPerdeuUI:
         posicao_y_texto_go = (self.tela_altura - altura_texto_go) // 4
         pygame_output_adapter.desenhar_superficie(texto_game_over, (posicao_x_texto_go, posicao_y_texto_go))
         
+        mouse_pos = pygame_input_adapter.mouse_posicao()
+        
+        # Verificar se o mouse está sobre o botão
+        if self.botao_voltar_menu.collidepoint(mouse_pos):
+            cor_atual = self.cor_botao_hover
+        else:
+            cor_atual = self.cor_botao_normal
+        
         # Desenhar o botão "Voltar ao menu"
-        pygame_output_adapter.desenhar_botao_retangulo(self.cor_botao_normal, self.botao_voltar_menu)
+        pygame_output_adapter.desenhar_botao_retangulo(cor_atual, self.botao_voltar_menu)
         texto_botao = pygame_output_adapter.renderizar_texto("Voltar ao menu")
         largura_texto, altura_texto = texto_botao.get_size()
         posicao_x_texto = self.botao_voltar_menu.x + (self.botao_voltar_menu.width - largura_texto) // 2
