@@ -39,6 +39,9 @@ class MenuInicialUI:
         self.botao_jogar = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y, botao_largura, botao_altura)
         self.cor_botao_hover = (15, 99, 245)
         self.cor_botao_normal = (5, 40, 97)
+
+        self.imagem = pygame_output_adapter.carregar_imagem("./adapters/primary/sprites/fundo8x6.png")
+        self.imagem_redimensionada = pygame_output_adapter.redimensionar_imagem(self.imagem, self.tela_altura, self.tela_largura)
         
     def renderizar_menu_inicial(self):
         """
@@ -53,7 +56,8 @@ class MenuInicialUI:
         pygame_output_adapter.tocar_som("menu_inicial")
         
         mouse_pos = pygame_input_adapter.mouse_posicao()
-        
+    
+
         # Verificar se o mouse está sobre o botão
         if self.botao_jogar.collidepoint(mouse_pos):
             cor_atual = self.cor_botao_hover
@@ -61,6 +65,7 @@ class MenuInicialUI:
             cor_atual = self.cor_botao_normal
         
         pygame_output_adapter.desenhar_botao_retangulo(cor_atual, self.botao_jogar)
+
         
         texto_botao = pygame_output_adapter.renderizar_texto("Jogar")
         
