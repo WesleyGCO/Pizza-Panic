@@ -3,6 +3,13 @@ from adapters.primary import pygame_input_adapter, pygame_output_adapter
 class MenuFaseUI:
     """
     Classe responsável pela interface do menu de fases, incluindo botões e tratamento de eventos.
+    
+    Esta classe gerencia a exibição do menu de fase, incluindo os botões de próxima
+    ou voltar ao menu, e lida com a entrada do usuário.
+    
+    Métodos:
+        renderizar_menu_fase(): Faz a renderização na tela do menu de fase para o jogador escolher as opções disponíveis
+        lidar_entrada_menu_fase(): Lida com a entrada do jogador no menu_fase
     """
     
     def __init__(self, tela_altura, tela_largura):
@@ -12,6 +19,17 @@ class MenuFaseUI:
         Args:
             tela_altura (int): Altura da tela do jogo.
             tela_largura (int): Largura da tela do jogo.
+            
+        Atributos:
+            tela_largura (int): A largura da tela do jogo.
+            tela_altura (int): A altura da tela do jogo.
+            botao_proxima_fase (pygame.Rect): O retângulo que representa o botão de próxima fase.
+            botao_voltar_menu (pygame.Rect): O retângulo que representa o botão de voltar ao menu.
+            cor_botao_hover (tuple): A cor do botão quando o mouse está sobre ele.
+            cor_botao_normal (tuple): A cor do botão em seu estado normal.
+
+        Returns:
+            None
         """
         self.tela_altura = tela_altura
         self.tela_largura = tela_largura
@@ -36,6 +54,9 @@ class MenuFaseUI:
     def renderizar_menu_fase(self):
         """
         Renderiza o menu de fase, desenhando os botões e seus textos.
+
+        Returns:
+            None
         """
         # Renderizar botões
         self.renderizar_botao(self.botao_proxima_fase, "Próxima fase")
@@ -44,6 +65,7 @@ class MenuFaseUI:
     def renderizar_botao(self, botao, texto):
         """
         Renderiza um botão retangular com o texto centralizado.
+        Este método muda a cor do botão dependendo se o mouse está sobre ele ou não.
 
         Args:
             botao (pygame.Rect): Retângulo representando o botão.

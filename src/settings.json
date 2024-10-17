@@ -8,5 +8,8 @@
         "sons_dir": "./adapters/primary/sons/",
         "volume_menu_inicial": 0.1,
         "volume_efeitos": 0.2
+    },
+    "sprites":{
+        "sprites_dir": "./adapters/primary/sprites/"
     }
 }
