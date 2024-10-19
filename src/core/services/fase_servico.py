@@ -19,6 +19,9 @@ class FaseService(FaseInterface):
         
         self.tela_largura = tamanho_tela_largura
         self.tela_altura = tamanho_tela_altura
+
+        self.fase_model.personagem.velocidade.x = 0
+        self.fase_model.personagem.posicao.x = 100
         
         self.tempo = 0
         self.relogio = pygame_output_adapter.criar_relogio()
