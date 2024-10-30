@@ -37,6 +37,7 @@ class MenuInicialUI:
         botao_posicao_x = (tela_largura - botao_largura) // 2
         botao_posicao_y = (tela_altura - botao_altura) // 2
         self.botao_jogar = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y, botao_largura, botao_altura)
+        self.botao_creditos = pygame_output_adapter.criar_retangulo(botao_posicao_x, botao_posicao_y + 2 * (botao_altura + 20), botao_largura, botao_altura)
         self.cor_botao_hover = (15, 99, 245)
         self.cor_botao_normal = (5, 40, 97)
 
@@ -55,11 +56,9 @@ class MenuInicialUI:
             None
         """
         mouse_pos = pygame_input_adapter.mouse_posicao()
-    
+   
         # Renderizar a imagem de fundo
-        #pygame_output_adapter.desenhar_superficie(self.imagem_redimensionada, (0, 0))
-        
-        pygame_output_adapter.tocar_som("menu_inicial")
+        pygame_output_adapter.desenhar_superficie(self.imagem_redimensionada, (0, 0))
 
         # Verificar se o mouse está sobre o botão
         if self.botao_jogar.collidepoint(mouse_pos):

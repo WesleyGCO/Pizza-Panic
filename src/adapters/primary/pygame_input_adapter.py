@@ -8,6 +8,7 @@ def capturar_tecla():
     informacao_dado = {
         'esquerda': keys[pygame.K_LEFT],
         'direita': keys[pygame.K_RIGHT],
+        'esc': keys[pygame.K_ESCAPE],
     }
     return informacao_dado
 

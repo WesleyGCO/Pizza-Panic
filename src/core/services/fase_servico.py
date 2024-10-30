@@ -4,7 +4,7 @@ from application.models.Sprites import Sprites
 from core.interfaces.FaseInterface import FaseInterface
 
 from adapters.primary import pygame_output_adapter, pygame_input_adapter
-from adapters.primary.use_cases import gerenciar_fase
+from adapters.primary.use_cases import gerenciar_fase, gerenciar_jogo
 
 class FaseService(FaseInterface):
     
@@ -71,6 +71,8 @@ class FaseService(FaseInterface):
                     self.fase_model.personagem.velocidade.x = +500
                 else:
                     self.fase_model.personagem.velocidade.x = 0
+        elif (tecla_pressionada['esc']):
+            gerenciar_jogo.iniciar_jogo(self.tela_largura, self.tela_altura)
         else:
             if isinstance(self.fase_model.personagem, Personagem):
                 self.fase_model.personagem.velocidade.x = 0
