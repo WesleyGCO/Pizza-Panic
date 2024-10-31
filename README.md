@@ -102,11 +102,11 @@ Os sprites e animações estão disponíveis [neste link](https://github.com/Wes
 
 ## Dependências
 
-Basta usar o comando a seguir para instalar a única biblioteca `pip install pygame`
+Basta usar o comando a seguir para instalar a partir do requirements -> `pip install -r requirements.txt`
 
 ## Deploy
 
-Tudo que você precisa fazer é rodar o comando abaixo dentro da pasta src do jogo:
+Tudo que você precisa fazer é rodar o comando abaixo dentro da pasta `src` do jogo:
 
 ```bash
   python .\main.py
