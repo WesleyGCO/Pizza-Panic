@@ -86,18 +86,13 @@ Pizza Panic utiliza a Arquitetura Hexagonal (ou Arquitetura de Portos e Adaptado
 
 Essa abordagem facilita a modularidade e a reutilização de código, mantendo a estrutura do software clara e organizada, o que é essencial para o desenvolvimento contínuo e escalável do Pizza Panic.
 
-
-## Prototipação
-
-Imagens do protótipo podem ser encontradas [aqui](https://github.com/WesleyGCO/Pizza-Panic/tree/main/src/assets/Imagens).
-
 ## Vídeos
 
-Um vídeo de referência para a mecânica do jogo pode ser encontrado no [jogo do café do Club Penguin](https://www.youtube.com/watch?v=Y_Olby1TKEo).
+Um vídeo de referência para a mecânica do jogo pode ser encontrado no [jogo do Empilha a Pilha do Club Penguin](https://www.youtube.com/watch?v=Y_Olby1TKEo).
 
 ## Sprites / Animações
 
-Os sprites e animações estão disponíveis [neste link](https://github.com/WesleyGCO/Pizza-Panic/tree/main/src/assets/Imagens).
+Os sprites e animações estão disponíveis [neste link](https://github.com/WesleyGCO/Pizza-Panic/tree/main/src/adapters/primary/sprites).
 
 ## Efeitos Sonoros
 
@@ -105,10 +100,14 @@ Os sprites e animações estão disponíveis [neste link](https://github.com/Wes
 - [Jamendo - Efeitos Sonoros para Videogames](https://licensing.jamendo.com/pt/catalogo/projeto/videogame)
 - [Pixabay - Músicas para Jogos de Vídeo](https://pixabay.com/pt/music/search/genre/jogos%20de%20v%C3%ADdeo/)
 
+## Dependências
+
+Basta usar o comando a seguir para instalar a única biblioteca `pip install pygame`
+
 ## Deploy
 
-Tudo que você precisa fazer é rodar o comando abaixo dentro da pasta do jogo:
+Tudo que você precisa fazer é rodar o comando abaixo dentro da pasta src do jogo:
 
 ```bash
-  python .\src\main.py
+  python .\main.py
 ```
