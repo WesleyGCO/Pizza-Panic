@@ -32,7 +32,7 @@ class TempoService(TempoInterface):
         # Desenha a quantidade de itens coletados na tela
         texto_itens_coletados = f"Pontuação: {personagem.pontuacao_personagem}"
 
-        superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (0, 0, 0))
+        superficie_texto = pygame_output_adapter.renderizar_texto(texto_itens_coletados, (255, 255, 255))
         pygame_output_adapter.desenhar_superficie(superficie_texto, (posicao_x_texto, posicao_y_texto))
 
     def contagem_regressiva(self, fase_model, tela_altura):
@@ -57,5 +57,5 @@ class TempoService(TempoInterface):
             return gerenciar_fase.setar_fase_perdida(fase_model)
         
         # Desenha o tempo restante na tela
-        superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (0, 0, 0))
+        superficie_texto_relogio = pygame_output_adapter.renderizar_texto(tempo_formatado, (255, 255, 255))
         pygame_output_adapter.desenhar_superficie(superficie_texto_relogio, (tela_altura - superficie_texto_relogio.get_width() - 10, 10))

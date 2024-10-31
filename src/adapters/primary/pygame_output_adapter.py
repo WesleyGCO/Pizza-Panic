@@ -112,20 +112,23 @@ fonte_padrao = pygame.font.Font(None, 30)
 def renderizar_texto(texto, cor = (255, 255, 255), fonte = fonte_padrao):
     return fonte.render(texto, True, cor)
 
-def renderizar_texto_placar(texto_pedidos, texto_atendidos):
-    
+def renderizar_texto_placar(texto_pedidos, texto_atendidos, texto_numero_fase):
     superficie_texto_pedidos = renderizar_texto(texto_pedidos)
     superficie_texto_atendidos = renderizar_texto(texto_atendidos)
-    
-    # Calcular a largura total dos textos
-    largura_total = superficie_texto_pedidos.get_width() + superficie_texto_atendidos.get_width() + 5  # 5 é o espaçamento entre os textos
+    superficie_texto_numero_fase = renderizar_texto(texto_numero_fase)
 
-    # Calcular a posição X centralizada, considerando a borda
+    # Calcular a largura total dos textos "pedidos" e "atendidos" juntos
+    largura_total = superficie_texto_pedidos.get_width() + superficie_texto_atendidos.get_width() + 20  # 20 é o espaçamento entre os textos
+
+    # Calcular a posição X centralizada para os textos "pedidos" e "atendidos"
     posicao_x_centralizada = calcular_posicao_x_centralizada(largura_total)
-
-    # Calcular a posição Y centralizada na parte superior, considerando a borda e o menu superior
     posicao_y_centralizada = calcular_posicao_y_centralizada_topo()
-        
+
+    # Desenhar texto_numero_fase centralizado acima dos textos de pedidos e atendidos
+    posicao_x_numero_fase = posicao_x_centralizada + largura_total // 2 - superficie_texto_numero_fase.get_width() // 2
+    posicao_y_numero_fase = posicao_y_centralizada - superficie_texto_numero_fase.get_height() - 3  # 10 é o espaço acima
+
+    desenhar_superficie(superficie_texto_numero_fase, (posicao_x_numero_fase, posicao_y_numero_fase))
     desenhar_superficie(superficie_texto_pedidos, (posicao_x_centralizada, posicao_y_centralizada))
     desenhar_superficie(superficie_texto_atendidos, (posicao_x_centralizada + superficie_texto_pedidos.get_width() + 20, posicao_y_centralizada))
 

@@ -1,6 +1,7 @@
 from adapters.primary import pygame_output_adapter
 from adapters.primary.ui.fase_ui import FaseUI
 from adapters.primary.ui.jogo_ui import JogoUI
+from adapters.primary.ui.menu_creditos_ui import MenuCreditosUI
 from adapters.primary.use_cases import gerenciar_fase, gerenciar_menus
 from application.models.Jogo import Jogo
 from adapters.primary.ui.menu_fase_ui import MenuFaseUI
@@ -39,12 +40,12 @@ def iniciar_jogo(tamanho_tela_largura, tamanho_tela_altura):
     
     while True:
         pygame_output_adapter.tocar_som("menu_inicial")
-        if gerenciar_menus.rodar_menu_inicial(menu_inicial):
+        if (gerenciar_menus.rodar_menu_inicial(menu_inicial)):
             jogo_ui = JogoUI(tamanho_tela_largura, tamanho_tela_altura, item_servico, personagem_servico)
             fase_ui = FaseUI(tamanho_tela_altura, tamanho_tela_largura, jogo_model.relogio, jogo_model.posicao_x_texto, jogo_model.posicao_y_texto)
     
             executar_jogo(jogo_model, jogo_ui, fase_ui, menu_fase, item_servico, personagem_servico, tempo_servico, tamanho_tela_largura, tamanho_tela_altura)
-            break
+            break            
 
 def executar_jogo(jogo_model, jogo_ui, fase_ui, menu_fase, item_servico, personagem_servico, tempo_servico,
                   tamanho_tela_largura, tamanho_tela_altura):

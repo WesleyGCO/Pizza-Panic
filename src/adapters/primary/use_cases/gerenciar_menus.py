@@ -19,6 +19,20 @@ def rodar_menu_inicial(menu_inicial):
             menu_inicial.renderizar_menu_inicial()
             pygame_output_adapter.atualizacao_tela()
             
+def rodar_menu_credito(menu_credito):
+    rodando_credito = True
+
+    while rodando_credito:
+        for evento in pygame_input_adapter.capturar_eventos():
+            if (evento.type == pygame_input_adapter.eh_sair(evento)):
+                pygame_output_adapter.sair()
+                quit()
+                
+            resultado = menu_credito.lidar_entrada_menu_creditos(evento)
+            if (resultado == "Voltar"):
+                rodando_credito = False
+                return True
+            
 def rodar_menu_fase(menu_fase, jogo_model, numero_fase):
     rodando_menu_fase = True
     while rodando_menu_fase:
