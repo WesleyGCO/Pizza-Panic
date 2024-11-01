@@ -70,6 +70,9 @@ class MenuCreditosUI:
 
         self.posicao_y_texto -= self.velocidade_rolagem
 
+        if (self.posicao_y_texto < -len(self.texto_creditos) * 30):
+            self.posicao_y_texto = self.tela_altura
+
         self.renderizar_botao(self.botao_voltar, "Voltar")
 
     def renderizar_botao(self, botao, texto):
