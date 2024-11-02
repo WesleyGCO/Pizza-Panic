@@ -17,45 +17,13 @@ class MenuScoreboardUI:
         self.cor_botao_normal = (5, 40, 97)
 
     def carregar_pontuacoes(self):
-        try:
-            with open('pontuacoes.txt', 'r') as f:
-                for linha in f:
-                    linha = linha.strip()
-                    if linha:  # Verifica se a linha não está vazia
-                        partes = linha.split(' - ')
-                        if len(partes) == 2:  # Verifica se existem duas partes
-                            nome = partes[0].split(': ')[1]  # Extrai o nome
-                            pontos = int(partes[1].split(': ')[1])  # Extrai os pontos e converte para inteiro
-                            self.pontuacoes.append((nome, pontos))  # Armazena como tupla (nome, pontos)
-            self.pontuacoes.sort(key=lambda x: x[1], reverse=True)  # Ordena por pontos, do maior para o menor
-        except FileNotFoundError:
-            self.pontuacoes = []  # Se o arquivo não existir, inicializa como lista vazia
-        except Exception as e:
-            print(f"Ocorreu um erro ao carregar as pontuações: {e}")  # Adiciona um tratamento genérico de erros
+        pass
 
     def renderizar_scoreboard(self):
-        # Exibir título
-        texto_scoreboard = pygame_output_adapter.renderizar_texto("Scoreboard")
-        largura_texto_sb, altura_texto_sb = texto_scoreboard.get_size()
-        posicao_x_texto_sb = (self.tela_largura - largura_texto_sb) // 2
-        posicao_y_texto_sb = int(self.tela_altura * 0.1)
-        pygame_output_adapter.desenhar_superficie(texto_scoreboard, (posicao_x_texto_sb, posicao_y_texto_sb))
+        pass
 
-        # Exibir pontuações
-        for i, (nome, pontos) in enumerate(self.pontuacoes):
-            texto_pontuacao = pygame_output_adapter.renderizar_texto(f"{i + 1}. Nome: {nome} - Pontos: {pontos}")
-            posicao_y_texto = posicao_y_texto_sb + 50 + i * 30  # Espaçamento entre as pontuações
-            pygame_output_adapter.desenhar_superficie(texto_pontuacao, (posicao_x_texto_sb, posicao_y_texto))
-
-        # Desenhar o botão "Voltar ao menu"
-        mouse_pos = pygame_input_adapter.mouse_posicao()
-        cor_atual = self.cor_botao_hover if self.botao_voltar_menu.collidepoint(mouse_pos) else self.cor_botao_normal
-        pygame_output_adapter.desenhar_botao_retangulo(cor_atual, self.botao_voltar_menu)
-        texto_botao = pygame_output_adapter.renderizar_texto("Voltar ao menu")
-        largura_texto, altura_texto = texto_botao.get_size()
-        posicao_x_texto = self.botao_voltar_menu.x + (self.botao_voltar_menu.width - largura_texto) // 2
-        posicao_y_texto = self.botao_voltar_menu.y + (self.botao_voltar_menu.height - altura_texto) // 2
-        pygame_output_adapter.desenhar_superficie(texto_botao, (posicao_x_texto, posicao_y_texto))
+    def renderizar_botao(self, botao):
+        pass
 
     def lidar_entrada_menu_scoreboard(self, evento):
         

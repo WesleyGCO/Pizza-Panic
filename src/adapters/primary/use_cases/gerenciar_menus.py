@@ -21,9 +21,9 @@ def rodar_menu_inicial(menu_inicial):
                 pygame_output_adapter.preencher_tela((0, 0, 0))
                 rodar_menu_creditos(MenuCreditosUI(menu_inicial.tela_largura, menu_inicial.tela_altura))
             
-            elif resultado == "Scoreboard":
-                pygame_output_adapter.preencher_tela((0, 0, 0))
-                rodar_menu_scoreboard(MenuScoreboardUI(menu_inicial.tela_largura, menu_inicial.tela_altura))
+            # elif resultado == "Scoreboard":
+            #     pygame_output_adapter.preencher_tela((0, 0, 0))
+            #     rodar_menu_scoreboard(MenuScoreboardUI(menu_inicial.tela_largura, menu_inicial.tela_altura))
                 
         menu_inicial.renderizar_menu_inicial()
         pygame_output_adapter.atualizacao_tela()
