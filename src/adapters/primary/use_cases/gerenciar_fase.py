@@ -73,7 +73,7 @@ def iniciar_fase(menu_fase, jogo_model, jogo_ui, fase_ui, item_servico, personag
             pygame_output_adapter.preencher_tela((0, 0, 0))
             
             # Gerencia o menu de derrota
-            if not gerenciar_menus.rodar_menu_perdeu(largura_tela, altura_tela):
+            if not gerenciar_menus.rodar_menu_perdeu(largura_tela, altura_tela, fase.personagem):
                 return False
 
 # Funções auxiliares para manipular o estado da fase

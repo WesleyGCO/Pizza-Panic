@@ -7,6 +7,7 @@ class Personagem(Objeto):
         self.cor = cor
         self.aceleracao.x = aceleracao
         self.pontuacao_personagem = 0
+        self.nome_personagem = None
 
     def adicionar_pontuacao(self, pontuacao):
         # Adiciona o item coletado à lista de itens coletados

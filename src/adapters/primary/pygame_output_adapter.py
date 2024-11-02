@@ -107,7 +107,7 @@ def calcular_posicao_y_centralizada_topo():
 
 #region Textos e fonte
 
-fonte_padrao = pygame.font.Font(".\\adapters\\primary\\fontes\\AHintofSass.ttf", 20)
+fonte_padrao = pygame.font.Font(".\\adapters\\primary\\resources\\fontes\\AHintofSass.ttf", 20)
 
 def criar_fonte(fonte, tamanho):
     return pygame.font.Font(fonte, tamanho)

@@ -1,0 +1,3 @@
+Nome: Wesley - Pontos: 5
+Nome: Joao - Pontos: 56
+Nome: Pedro - Pontos: 45
